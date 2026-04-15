@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio | José Pimentel</title>
     <style>
-        /* Baseado nas variáveis que você enviou */
         :root {
-            --background: #0d0d0d; /* oklch(0.145 0 0) */
-            --foreground: #fcfcfc; /* oklch(0.985 0 0) */
-            --primary: #7c3aed;    /* Um roxo vibrante para o tema Dark */
-            --card: #1a1a1a;
+            --background: #0d0d0d; 
+            --foreground: #fcfcfc; 
+            --primary: #7c3aed;    
+            --card: #161616;
             --muted: #717182;
+            --border: rgba(255, 255, 255, 0.1);
             --radius: 0.625rem;
         }
 
@@ -20,55 +20,63 @@
             color: var(--foreground);
             font-family: 'Inter', system-ui, sans-serif;
             margin: 0;
+            padding: 2rem 1rem;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
         }
 
         .card {
             background-color: var(--card);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 2.5rem;
-            max-width: 450px;
-            width: 90%;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            text-align: center;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
+
+        .header-card { text-align: center; }
 
         .profile-border {
-            width: 80px;
-            height: 80px;
+            width: 70px; height: 70px;
             border: 2px solid var(--primary);
             border-radius: 50%;
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 1rem;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary); font-weight: bold; font-size: 1.2rem;
+        }
+
+        h1 { font-size: 1.5rem; margin: 0; letter-spacing: -0.025em; }
+        h2 { font-size: 1.2rem; color: var(--primary); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        
+        .subtitle { color: var(--muted); margin-top: 0.2rem; font-size: 0.9rem; }
+
+        /* Estilo para Skills */
+        .skills-grid {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-weight: bold;
-            font-size: 1.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
-
-        h1 {
-            font-size: 1.5rem; /* text-2xl do seu código */
+        .skill-tag {
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            color: #a78bfa;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
             font-weight: 500;
-            margin: 0;
-            letter-spacing: -0.025em;
         }
 
-        p.subtitle {
-            color: var(--muted);
-            font-size: 1rem;
-            margin-top: 0.5rem;
-        }
-
-        .description {
-            margin: 1.5rem 0;
-            line-height: 1.6;
-            color: #d1d1d1;
-        }
+        /* Estilo para Experiência */
+        .exp-item { margin-bottom: 1.5rem; }
+        .exp-title { font-weight: 600; font-size: 1rem; margin: 0; }
+        .exp-company { color: var(--muted); font-size: 0.85rem; margin-bottom: 0.5rem; display: block; }
+        .exp-desc { font-size: 0.9rem; color: #d1d1d1; line-height: 1.5; margin: 0; }
 
         .btn-primary {
             background-color: var(--primary);
@@ -77,29 +85,56 @@
             border-radius: var(--radius);
             text-decoration: none;
             font-weight: 500;
-            display: inline-block;
-            transition: opacity 0.2s;
+            display: block;
+            text-align: center;
+            transition: 0.2s;
         }
-
-        .btn-primary:hover {
-            opacity: 0.9;
-        }
+        .btn-primary:hover { filter: brightness(1.2); }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <div class="profile-border">JP</div>
-        <h1>José Pimentel</h1>
-        <p class="subtitle">Análise e Desenvolvimento de Sistemas</p>
-        
-        <div class="description">
-            Estudante de ADS com foco em transformar protótipos do Figma em aplicações reais e eficientes.
+    <div class="container">
+        <div class="card header-card">
+            <div class="profile-border">JP</div>
+            <h1>José Pimentel</h1>
+            <p class="subtitle">Análise e Desenvolvimento de Sistemas | Mechatronics Technician</p>
+            <div style="margin-top: 1.5rem;">
+                <a href="https://github.com/jose1pimentel0" class="btn-primary" target="_blank">Ver GitHub</a>
+            </div>
         </div>
-        
-        <a href="https://github.com/jose1pimentel0" class="btn-primary" target="_blank">
-            Acessar Repositórios
-        </a>
+
+        <div class="card">
+            <h2>Habilidades Técnicas</h2>
+            <div class="skills-grid">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">SQL (Bancos de Dados)</span>
+                <span class="skill-tag">Modelagem ERD/UML</span>
+                <span class="skill-tag">Mecatrônica</span>
+                <span class="skill-tag">Montagem Mecânica Profissional</span>
+                <span class="skill-tag">Figma para Dev</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Experiência Profissional</h2>
+            
+            <div class="exp-item">
+                <p class="exp-title">Montador Mecânico Especializado</p>
+                <span class="exp-company">Alstom | 2025 - 2026</span>
+                <p class="exp-desc">
+                    Responsável pela montagem de precisão em projetos ferroviários (Linha 6 SP e Linha 7 Santiago), incluindo sistemas pneumáticos e de frenagem.
+                </p>
+            </div>
+
+            <div class="exp-item">
+                <p class="exp-title">Técnico em Suporte de TI</p>
+                <span class="exp-company">Experiência Técnica</span>
+                <p class="exp-desc">
+                    Manutenção de hardware, troubleshooting e suporte ao usuário final.
+                </p>
+            </div>
+        </div>
     </div>
 
 </body>
