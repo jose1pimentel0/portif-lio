@@ -1,176 +1,1061 @@
 <!DOCTYPE html>
-<html lang="pt-br" class="dark">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio | José Pimentel</title>
-    <style>
-        :root {
-            --background: #0d0d0d; 
-            --foreground: #fcfcfc; 
-            --primary: #7c3aed;    
-            --card: #161616;
-            --muted: #717182;
-            --border: rgba(255, 255, 255, 0.1);
-            --radius: 0.625rem;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>José Pimentel — Desenvolvedor ADS & Técnico em Mecatrônica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            background-color: var(--background);
-            color: var(--foreground);
-            font-family: 'Inter', system-ui, sans-serif;
-            margin: 0;
-            padding: 2rem 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+:root {
+  --purple: #7c3aed;
+  --purple-light: #a78bfa;
+  --purple-glow: rgba(124, 58, 237, 0.45);
+  --purple-subtle: rgba(124, 58, 237, 0.12);
+  --bg: #0b0b10;
+  --bg2: #111118;
+  --bg3: #18181f;
+  --bg4: #1f1f2a;
+  --text: #ede9f8;
+  --muted: #8a8599;
+  --muted2: #c4bede;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(124,58,237,0.25);
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
 
-        .container {
-            max-width: 600px;
-            width: 100%;
-        }
+html { scroll-behavior: smooth; }
 
-        .card {
-            background-color: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
 
-        .header-card { text-align: center; }
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--purple); border-radius: 2px; }
 
-        .profile-border {
-            width: 70px; height: 70px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            margin: 0 auto 1rem;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--primary); font-weight: bold; font-size: 1.2rem;
-        }
+/* ─── NOISE OVERLAY ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 1000;
+}
 
-        h1 { font-size: 1.5rem; margin: 0; letter-spacing: -0.025em; }
-        h2 { font-size: 1.2rem; color: var(--primary); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
-        
-        .subtitle { color: var(--muted); margin-top: 0.2rem; font-size: 0.9rem; }
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 900;
+  padding: 0 2.5rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(11,11,16,0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
 
-        .button-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 1.5rem;
-            justify-content: center;
-        }
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  color: var(--purple-light);
+}
 
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        .skill-tag {
-            background: rgba(124, 58, 237, 0.1);
-            border: 1px solid rgba(124, 58, 237, 0.3);
-            color: #a78bfa;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
 
-        .exp-item { margin-bottom: 1.5rem; }
-        .exp-title { font-weight: 600; font-size: 1rem; margin: 0; }
-        .exp-company { color: var(--muted); font-size: 0.85rem; margin-bottom: 0.5rem; display: block; }
-        .exp-desc { font-size: 0.9rem; color: #d1d1d1; line-height: 1.5; margin: 0; }
+.nav-links a {
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
+}
 
-        .btn {
-            padding: 0.75rem 1rem;
-            border-radius: var(--radius);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: 0.2s;
-            min-width: 120px;
-            text-align: center;
-        }
-        .btn-primary { background-color: var(--primary); color: white; }
-        .btn-outline { border: 1px solid var(--border); color: var(--foreground); }
-        .btn-insta { border: 1px solid #e1306c; color: #e1306c; }
-        .btn-linkedin { border: 1px solid #0077b5; color: #0077b5; }
-        
-        .btn:hover { filter: brightness(1.2); background-color: rgba(255, 255, 255, 0.05); }
-        .btn-primary:hover { background-color: var(--primary); filter: brightness(1.2); }
-        .btn-insta:hover { background-color: rgba(225, 48, 108, 0.1); }
-        .btn-linkedin:hover { background-color: rgba(0, 119, 181, 0.1); }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--purple-light);
+  transition: width 0.25s ease;
+}
 
-        .contact-link {
-            display: block;
-            color: #d1d1d1;
-            text-decoration: none;
-            margin-bottom: 0.8rem;
-            font-size: 0.95rem;
-        }
-        .contact-link:hover { color: var(--primary); }
-    </style>
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lang-toggle {
+  display: flex;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.lang-btn {
+  padding: 5px 12px;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  font-family: var(--font-display);
+  transition: all 0.2s;
+}
+
+.lang-btn.active {
+  background: var(--purple);
+  color: #fff;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.hamburger span {
+  width: 22px;
+  height: 1.5px;
+  background: var(--text);
+  border-radius: 1px;
+  transition: 0.3s;
+  display: block;
+}
+
+/* ─── MOBILE MENU ─── */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 920;
+  backdrop-filter: blur(4px);
+}
+
+.overlay.open { display: block; }
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -280px;
+  width: 260px;
+  height: 100dvh;
+  background: var(--bg2);
+  border-left: 1px solid var(--border);
+  z-index: 950;
+  padding: 5rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu.open { right: 0; }
+
+.mobile-close {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1.3rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.mobile-menu a {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s;
+}
+
+.mobile-menu a:hover { color: var(--text); }
+
+.mobile-menu .lang-toggle {
+  margin-top: 1.5rem;
+  align-self: flex-start;
+}
+
+/* ─── SECTIONS ─── */
+section {
+  padding: 7rem 2.5rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ─── HERO / PERFIL ─── */
+#perfil {
+  padding-top: 9rem;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-glow {
+  position: absolute;
+  top: 20%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-line {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.hero-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--purple-light);
+  border-radius: 50%;
+  animation: blink 2.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.hero-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--purple-light);
+}
+
+h1.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 1.25rem;
+}
+
+h1.hero-title em {
+  font-style: normal;
+  color: var(--purple-light);
+  position: relative;
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+
+.hero-subtitle span {
+  color: var(--muted2);
+  font-weight: 400;
+}
+
+.about-block {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--purple);
+  border-radius: 0 12px 12px 0;
+  padding: 1.5rem 1.75rem;
+  font-size: 0.92rem;
+  line-height: 1.85;
+  color: var(--muted2);
+  margin-bottom: 2.5rem;
+  max-width: 680px;
+}
+
+.formation-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  max-width: 580px;
+}
+
+.formation-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.1rem 1.25rem;
+}
+
+.f-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--purple-light);
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+.f-title {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+  line-height: 1.3;
+}
+
+.f-sub {
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+
+.cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.9rem;
+  background: var(--purple);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  text-decoration: none;
+}
+
+.cv-btn:hover {
+  background: #6d28d9;
+  transform: translateY(-1px);
+}
+
+.cv-btn:active { transform: translateY(0); }
+
+.cv-btn svg { width: 15px; height: 15px; }
+
+/* ─── SECTION HEADER ─── */
+.s-header { margin-bottom: 3rem; }
+
+.s-number {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--purple-light);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+h2.s-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+/* ─── SKILLS ─── */
+#skills { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); max-width: 100%; }
+
+#skills > .s-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 7rem 2.5rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+}
+
+.skill-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.4rem;
+  transition: border-color 0.25s;
+}
+
+.skill-card:hover { border-color: var(--border2); }
+
+.sk-label {
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--purple-light);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.tags { display: flex; flex-wrap: wrap; gap: 5px; }
+
+.tag {
+  display: inline-block;
+  padding: 4px 11px;
+  border-radius: 6px;
+  background: var(--purple-subtle);
+  border: 1px solid var(--border2);
+  color: var(--purple-light);
+  font-size: 0.76rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+/* ─── EXPERIENCE ─── */
+.exp-list { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.exp-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.75rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.55s ease, transform 0.55s ease, border-color 0.25s;
+}
+
+.exp-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.exp-card:hover { border-color: var(--border2); }
+
+.exp-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--purple-subtle);
+  border: 1px solid var(--border2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.exp-icon svg { width: 20px; height: 20px; color: var(--purple-light); }
+
+.exp-body {}
+
+.exp-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.exp-company {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.exp-role {
+  font-size: 0.8rem;
+  color: var(--purple-light);
+  margin-top: 0.15rem;
+}
+
+.exp-period {
+  font-size: 0.72rem;
+  color: var(--muted);
+  background: var(--bg4);
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.exp-desc {
+  font-size: 0.86rem;
+  line-height: 1.75;
+  color: var(--muted2);
+}
+
+/* ─── CONTACT ─── */
+#contato { position: relative; }
+
+.contact-glow {
+  position: absolute;
+  bottom: 0;
+  left: -5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  border-radius: 30px;
+  color: #4ade80;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 2.5rem;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background: #4ade80;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(74,222,128,0.4); }
+  50% { opacity: 0.6; box-shadow: 0 0 0 5px rgba(74,222,128,0); }
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  max-width: 480px;
+}
+
+.contact-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.1rem 1.25rem;
+}
+
+.c-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--purple-light);
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.c-value {
+  font-size: 0.85rem;
+  color: var(--text);
+  word-break: break-all;
+}
+
+.social-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.3rem;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--muted2);
+  font-size: 0.83rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.social-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+.social-btn:hover {
+  border-color: var(--purple);
+  color: var(--purple-light);
+  box-shadow: 0 0 16px var(--purple-glow), inset 0 0 12px rgba(124,58,237,0.06);
+  transform: translateY(-1px);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  text-align: center;
+  padding: 2.5rem;
+  color: var(--muted);
+  font-size: 0.76rem;
+  border-top: 1px solid var(--border);
+}
+
+footer span { color: var(--purple-light); }
+
+/* ─── DIVIDER ─── */
+.section-divider {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 700px) {
+  nav { padding: 0 1.25rem; }
+  nav .nav-links { display: none; }
+  .hamburger { display: flex; }
+  section { padding: 5rem 1.25rem; }
+  #perfil { padding-top: 7rem; }
+  #skills > .s-inner { padding: 5rem 1.25rem; }
+  .formation-row { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; max-width: 100%; }
+  .exp-card { grid-template-columns: 1fr; gap: 1rem; }
+  .exp-icon { display: none; }
+  h1.hero-title { font-size: 2.2rem; }
+}
+
+@media (max-width: 480px) {
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="card header-card">
-            <div class="profile-border">JP</div>
-            <h1>José Pimentel de Oliveira</h1>
-            <p class="subtitle">Análise e Desenvolvimento de Sistemas | Técnico em Mecatrónica</p>
-            
-            <div class="button-group">
-                <a href="https://github.com/jose1pimentel0" class="btn btn-primary" target="_blank">GitHub</a>
-                <a href="https://www.linkedin.com/in/josé-pimentel-de-oliveira-643b5a3aa" class="btn btn-linkedin" target="_blank">LinkedIn</a>
-                <a href="https://www.instagram.com/ze.06z?igsh=MTd4aGUzZWNsYWQz" class="btn btn-insta" target="_blank">Instagram</a>
-                <a href="https://docs.google.com/document/d/1SL9lQdC29JfXIG1wj2N_UaAx_SaOO7gDY8kSLKbsDy4/edit?usp=sharing" class="btn btn-outline" target="_blank">Baixar CV</a>
-            </div>
-        </div>
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">JP</span>
+  <ul class="nav-links">
+    <li><a href="#perfil" data-i18n="nav_profile">Perfil</a></li>
+    <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
+    <li><a href="#experiencia" data-i18n="nav_exp">Experiência</a></li>
+    <li><a href="#contato" data-i18n="nav_contact">Contato</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('pt')">PT</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <div class="hamburger" id="hamburger" onclick="openMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
 
-        <div class="card">
-            <h2>Sobre Mim</h2>
-            <p class="exp-desc">
-                Profissional com sólida formação técnica em Mecatrónica e experiência prática em suporte de TI e produção industrial[cite: 5]. Atualmente cursando ADS com foco em Python e SQL.
-            </p>
-        </div>
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile menu">
+  <button class="mobile-close" onclick="closeMenu()" aria-label="Fechar menu">✕</button>
+  <a href="#perfil" onclick="closeMenu()" data-i18n="nav_profile">Perfil</a>
+  <a href="#skills" onclick="closeMenu()" data-i18n="nav_skills">Skills</a>
+  <a href="#experiencia" onclick="closeMenu()" data-i18n="nav_exp">Experiência</a>
+  <a href="#contato" onclick="closeMenu()" data-i18n="nav_contact">Contato</a>
+  <div class="lang-toggle" style="margin-top:1.5rem">
+    <button class="lang-btn active" onclick="setLang('pt')">PT</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
 
-        <div class="card">
-            <h2>Habilidades Técnicas</h2>
-            <div class="skills-grid">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">SQL</span>
-                <span class="skill-tag">Manutenção de Hardware</span>
-                <span class="skill-tag">Suporte TI</span>
-                <span class="skill-tag">Mecatrónica</span>
-                <span class="skill-tag">Montagem Industrial</span>
-                <span class="skill-tag">Excel/Word</span>
-            </div>
-        </div>
+<!-- PERFIL -->
+<section id="perfil">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-line">
+    <div class="hero-dot" aria-hidden="true"></div>
+    <span class="hero-badge" data-i18n="badge_role">Desenvolvedor ADS &amp; Técnico em Mecatrônica</span>
+  </div>
+  <h1 class="hero-title">José <em>Pimentel</em></h1>
+  <p class="hero-subtitle" data-i18n="subtitle_html">
+    <span>Estudante de ADS</span> · Técnico em Mecatrônica · Taubaté, SP
+  </p>
+  <div class="about-block" data-i18n="about">
+    Desenvolvedor com base técnica sólida em Mecatrônica e experiência prática em ambientes industriais de alta precisão. Atualmente focado em ADS, unindo o raciocínio lógico da automação com o desenvolvimento de software para criar soluções eficientes em Python, SQL e IA.
+  </div>
+  <div class="formation-row">
+    <div class="formation-card">
+      <div class="f-label" data-i18n="f_label1">Formação Superior</div>
+      <div class="f-title" data-i18n="f_title1">Análise e Desenvolvimento de Sistemas</div>
+      <div class="f-sub">SENAI Taubaté · 2025–2027</div>
+    </div>
+    <div class="formation-card">
+      <div class="f-label" data-i18n="f_label2">Formação Técnica</div>
+      <div class="f-title" data-i18n="f_title2">Técnico em Mecatrônica</div>
+      <div class="f-sub" data-i18n="f_concluded">Concluído · 2025</div>
+    </div>
+  </div>
+  <button class="cv-btn" onclick="downloadCV()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/>
+    </svg>
+    <span data-i18n="dl_cv">Download CV</span>
+  </button>
+</section>
 
-        <div class="card">
-            <h2>Experiência Profissional</h2>
-            <div class="exp-item">
-                <p class="exp-title">Ajudante de Produção</p>
-                <span class="exp-company">Alstom | Julho 2025 - Março 2026</span>
-                <p class="exp-desc">Projetos: Linha 6 (Metrô SP) e Linha 7 (Metrô Santiago). Suporte técnico em montagens de alta precisão.</p>
-            </div>
-            <div class="exp-item">
-                <p class="exp-title">Aprendiz de TI</p>
-                <span class="exp-company">Soluções Usiminas | 2024 - Junho 2025</span>
-                <p class="exp-desc">Manutenção preventiva/corretiva de hardware e suporte técnico a usuários.</p>
-            </div>
-        </div>
+<!-- SKILLS -->
+<div id="skills" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+<div class="s-inner">
+  <div class="s-header">
+    <div class="s-number">02</div>
+    <h2 class="s-title" data-i18n="skills_title">Skills &amp; Tecnologias</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="sk-label" data-i18n="sk_dev">Desenvolvimento</div>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">SQL</span>
+        <span class="tag" data-i18n="sk_logic">Lógica de Programação</span>
+        <span class="tag">ERD / UML</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="sk-label" data-i18n="sk_tech">Técnica &amp; Industrial</div>
+      <div class="tags">
+        <span class="tag">Mecatrônica</span>
+        <span class="tag" data-i18n="sk_hw">Manutenção de Hardware</span>
+        <span class="tag" data-i18n="sk_it">Suporte de TI</span>
+        <span class="tag" data-i18n="sk_pneu">Sistemas Pneumáticos</span>
+        <span class="tag" data-i18n="sk_brake">Sistemas de Frenagem</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="sk-label" data-i18n="sk_cert">Certificações</div>
+      <div class="tags">
+        <span class="tag" data-i18n="sk_ai">IA Generativa</span>
+        <span class="tag">Google Cloud</span>
+        <span class="tag">SENAI</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="sk-label" data-i18n="sk_tools">Ferramentas</div>
+      <div class="tags">
+        <span class="tag" data-i18n="sk_excel">Excel (Intermediário)</span>
+        <span class="tag">Linux</span>
+        <span class="tag">Figma</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 
-        <div class="card">
-            <h2>Contacto</h2>
-            <a href="mailto:jose1pimentel0@gmail.com" class="contact-link">📧 jose1pimentel0@gmail.com</a>
-            <p class="contact-link">📱 (12) 99144-7074</p>
-            <p class="subtitle">Taubaté, SP</p>
+<!-- EXPERIÊNCIA -->
+<section id="experiencia">
+  <div class="s-header">
+    <div class="s-number">03</div>
+    <h2 class="s-title" data-i18n="exp_title">Experiência &amp; Projetos</h2>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-card">
+      <div class="exp-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="7" width="20" height="14" rx="2"/>
+          <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
+          <line x1="12" y1="12" x2="12" y2="16"/>
+          <line x1="10" y1="14" x2="14" y2="14"/>
+        </svg>
+      </div>
+      <div class="exp-body">
+        <div class="exp-top">
+          <div>
+            <div class="exp-company">Alstom</div>
+            <div class="exp-role" data-i18n="alstom_role">Montador Mecânico Especializado</div>
+          </div>
+          <span class="exp-period" data-i18n="alstom_period">2023 – 2025</span>
         </div>
+        <p class="exp-desc" data-i18n="alstom_desc">Atuação nas Linhas 6 (São Paulo) e 7 (Santiago do Chile), lidando com sistemas de alta precisão, montagem estrutural de trens e sistemas de frenagem em ambiente industrial ferroviário de classe mundial.</p>
+      </div>
     </div>
 
+    <div class="exp-card">
+      <div class="exp-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2"/>
+          <path d="M8 21h8M12 17v4"/>
+        </svg>
+      </div>
+      <div class="exp-body">
+        <div class="exp-top">
+          <div>
+            <div class="exp-company">Soluções Usiminas</div>
+            <div class="exp-role" data-i18n="usiminas_role">Suporte de TI</div>
+          </div>
+          <span class="exp-period" data-i18n="usiminas_period">2022 – 2023</span>
+        </div>
+        <p class="exp-desc" data-i18n="usiminas_desc">Manutenção preventiva e corretiva de hardware, suporte técnico a usuários finais e gestão de chamados em ambiente corporativo de grande porte.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="contact-glow" aria-hidden="true"></div>
+  <div class="s-header">
+    <div class="s-number">04</div>
+    <h2 class="s-title" data-i18n="contact_title">Contato</h2>
+  </div>
+  <div class="status-pill">
+    <div class="status-dot" aria-hidden="true"></div>
+    <span data-i18n="status">Disponível para Estágio em Desenvolvimento / TI</span>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="c-label" data-i18n="c_email">E-mail</div>
+      <div class="c-value">jose1pimentel0@gmail.com</div>
+    </div>
+    <div class="contact-card">
+      <div class="c-label" data-i18n="c_location">Localização</div>
+      <div class="c-value">Taubaté, SP — Brasil</div>
+    </div>
+  </div>
+  <div class="social-row">
+    <a class="social-btn" href="https://linkedin.com/in/jose-pimentel" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+        <circle cx="4" cy="4" r="2"/>
+      </svg>
+      LinkedIn
+    </a>
+    <a class="social-btn" href="https://github.com/jose-pimentel" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
+      </svg>
+      GitHub
+    </a>
+    <a class="social-btn" href="https://instagram.com" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2" y="2" width="20" height="20" rx="5"/>
+        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+      </svg>
+      Instagram
+    </a>
+    <a class="social-btn" href="mailto:jose1pimentel0@gmail.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+        <polyline points="22,6 12,13 2,6"/>
+      </svg>
+      E-mail
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 José Pimentel &nbsp;·&nbsp; <span data-i18n="footer_role">Desenvolvedor ADS &amp; Técnico em Mecatrônica</span></p>
+</footer>
+
+<script>
+// ── i18n ──
+const translations = {
+  pt: {
+    nav_profile: "Perfil", nav_skills: "Skills", nav_exp: "Experiência", nav_contact: "Contato",
+    badge_role: "Desenvolvedor ADS & Técnico em Mecatrônica",
+    subtitle_html: null,
+    about: "Desenvolvedor com base técnica sólida em Mecatrônica e experiência prática em ambientes industriais de alta precisão. Atualmente focado em ADS, unindo o raciocínio lógico da automação com o desenvolvimento de software para criar soluções eficientes em Python, SQL e IA.",
+    f_label1: "Formação Superior", f_title1: "Análise e Desenvolvimento de Sistemas",
+    f_label2: "Formação Técnica", f_title2: "Técnico em Mecatrônica", f_concluded: "Concluído · 2025",
+    dl_cv: "Download CV",
+    skills_title: "Skills & Tecnologias", sk_dev: "Desenvolvimento", sk_tech: "Técnica & Industrial",
+    sk_cert: "Certificações", sk_tools: "Ferramentas", sk_logic: "Lógica de Programação",
+    sk_hw: "Manutenção de Hardware", sk_it: "Suporte de TI", sk_pneu: "Sistemas Pneumáticos",
+    sk_brake: "Sistemas de Frenagem", sk_ai: "IA Generativa", sk_excel: "Excel (Intermediário)",
+    exp_title: "Experiência & Projetos",
+    alstom_role: "Montador Mecânico Especializado", alstom_period: "2023 – 2025",
+    alstom_desc: "Atuação nas Linhas 6 (São Paulo) e 7 (Santiago do Chile), lidando com sistemas de alta precisão, montagem estrutural de trens e sistemas de frenagem em ambiente industrial ferroviário de classe mundial.",
+    usiminas_role: "Suporte de TI", usiminas_period: "2022 – 2023",
+    usiminas_desc: "Manutenção preventiva e corretiva de hardware, suporte técnico a usuários finais e gestão de chamados em ambiente corporativo de grande porte.",
+    contact_title: "Contato", c_email: "E-mail", c_location: "Localização",
+    status: "Disponível para Estágio em Desenvolvimento / TI",
+    footer_role: "Desenvolvedor ADS & Técnico em Mecatrônica"
+  },
+  en: {
+    nav_profile: "Profile", nav_skills: "Skills", nav_exp: "Experience", nav_contact: "Contact",
+    badge_role: "Systems Development Student & Mechatronics Technician",
+    subtitle_html: null,
+    about: "Developer with a solid technical background in Mechatronics and hands-on experience in high-precision industrial environments. Currently focused on Systems Development, bridging automation logic with software development to build efficient solutions in Python, SQL, and AI.",
+    f_label1: "Higher Education", f_title1: "Systems Analysis and Development",
+    f_label2: "Technical Training", f_title2: "Mechatronics Technician", f_concluded: "Completed · 2025",
+    dl_cv: "Download CV",
+    skills_title: "Skills & Technologies", sk_dev: "Development", sk_tech: "Technical & Industrial",
+    sk_cert: "Certifications", sk_tools: "Tools", sk_logic: "Programming Logic",
+    sk_hw: "Hardware Maintenance", sk_it: "IT Support", sk_pneu: "Pneumatic Systems",
+    sk_brake: "Braking Systems", sk_ai: "Generative AI", sk_excel: "Excel (Intermediate)",
+    exp_title: "Experience & Projects",
+    alstom_role: "Specialized Mechanical Assembler", alstom_period: "2023 – 2025",
+    alstom_desc: "Worked on Line 6 (São Paulo) and Line 7 (Santiago, Chile), handling high-precision systems, structural train assembly, and braking systems in a world-class railway industrial environment.",
+    usiminas_role: "IT Support", usiminas_period: "2022 – 2023",
+    usiminas_desc: "Preventive and corrective hardware maintenance, end-user technical support, and ticket management in a large corporate environment.",
+    contact_title: "Contact", c_email: "E-mail", c_location: "Location",
+    status: "Available for Internship in Development / IT",
+    footer_role: "Systems Development Student & Mechatronics Technician"
+  }
+};
+
+let currentLang = 'pt';
+
+function setLang(lang) {
+  currentLang = lang;
+  const t = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== null && t[key] !== undefined) el.textContent = t[key];
+  });
+  // subtitle special case
+  const sub = document.querySelector('.hero-subtitle');
+  if (sub) {
+    if (lang === 'en') {
+      sub.innerHTML = '<span>Systems Development Student</span> · Mechatronics Technician · Taubaté, SP';
+    } else {
+      sub.innerHTML = '<span>Estudante de ADS</span> · Técnico em Mecatrônica · Taubaté, SP';
+    }
+  }
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent.trim() === lang.toUpperCase());
+  });
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+}
+
+// ── Mobile menu ──
+function openMenu() {
+  document.getElementById('mobileMenu').classList.add('open');
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── Scroll reveal ──
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.exp-card').forEach((card, i) => {
+  card.style.transitionDelay = (i * 0.12) + 's';
+  revealObs.observe(card);
+});
+
+// ── Download CV ──
+function downloadCV() {
+  const t = translations[currentLang];
+  const isEn = currentLang === 'en';
+  const content = [
+    "JOSÉ PIMENTEL",
+    isEn ? "Systems Development Student & Mechatronics Technician" : "Desenvolvedor ADS & Técnico em Mecatrônica",
+    "jose1pimentel0@gmail.com  |  Taubaté, SP — Brasil",
+    "LinkedIn: linkedin.com/in/jose-pimentel  |  GitHub: github.com/jose-pimentel",
+    "",
+    "─────────────────────────────────────────",
+    isEn ? "EDUCATION" : "FORMAÇÃO",
+    "─────────────────────────────────────────",
+    isEn
+      ? "• Systems Analysis and Development — SENAI Taubaté (2025–2027)"
+      : "• Análise e Desenvolvimento de Sistemas — SENAI Taubaté (2025–2027)",
+    isEn
+      ? "• Mechatronics Technician — Completed 2025"
+      : "• Técnico em Mecatrônica — Concluído 2025",
+    "",
+    "─────────────────────────────────────────",
+    isEn ? "SKILLS" : "HABILIDADES",
+    "─────────────────────────────────────────",
+    isEn
+      ? "Development:   Python, SQL, Programming Logic, ERD/UML"
+      : "Desenvolvimento: Python, SQL, Lógica de Programação, ERD/UML",
+    isEn
+      ? "Technical:     Mechatronics, Hardware Maintenance, IT Support, Pneumatic & Braking Systems"
+      : "Técnica:       Mecatrônica, Manutenção de Hardware, Suporte de TI, Sistemas Pneumáticos e de Frenagem",
+    isEn
+      ? "Tools:         Excel (Intermediate), Linux, Figma"
+      : "Ferramentas:   Excel (Intermediário), Linux, Figma",
+    isEn
+      ? "Certification: Generative AI — Google Cloud / SENAI"
+      : "Certificação:  IA Generativa — Google Cloud / SENAI",
+    "",
+    "─────────────────────────────────────────",
+    isEn ? "EXPERIENCE" : "EXPERIÊNCIA",
+    "─────────────────────────────────────────",
+    "ALSTOM  |  " + (isEn ? "Specialized Mechanical Assembler" : "Montador Mecânico Especializado") + "  |  2023–2025",
+    isEn
+      ? "  Lines 6 (São Paulo) and 7 (Santiago, Chile) — high-precision systems, structural assembly, braking systems."
+      : "  Linhas 6 (São Paulo) e 7 (Santiago do Chile) — sistemas de alta precisão, montagem estrutural e frenagem.",
+    "",
+    "SOLUÇÕES USIMINAS  |  " + (isEn ? "IT Support" : "Suporte de TI") + "  |  2022–2023",
+    isEn
+      ? "  Preventive/corrective hardware maintenance and end-user support in large corporate environment."
+      : "  Manutenção preventiva e corretiva de hardware e suporte a usuários finais em grande empresa.",
+    "",
+    "─────────────────────────────────────────",
+    "© 2025 José Pimentel"
+  ].join('\n');
+
+  const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'Jose_Pimentel_CV.txt';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+</script>
 </body>
 </html>
+
