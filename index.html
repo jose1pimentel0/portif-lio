@@ -73,15 +73,15 @@ nav {
   text-decoration: none; 
   transition: all 0.3s ease; 
   position: relative;
-  padding: 5px 10px;
+  padding: 5px 12px;
   border-radius: 6px;
 }
 
 .nav-links a:hover { 
   color: var(--purple-light); 
-  text-shadow: 0 0 8px var(--purple-glow); /* Brilho no texto */
-  background: var(--purple-subtle); /* Sombreado de fundo leve */
-  box-shadow: 0 0 15px rgba(124, 58, 237, 0.2); /* Sombreado externo roxo */
+  text-shadow: 0 0 10px var(--purple-glow); 
+  background: var(--purple-subtle); 
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.25); 
 }
 
 .lang-toggle { display: flex; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
@@ -144,21 +144,21 @@ h1.hero-title em { font-style: normal; color: var(--purple-light); }
 </nav>
 
 <section id="perfil">
-  <h1 class="hero-title">José <em>Pimentel</em> [cite: 1]</h1>
+  <h1 class="hero-title">José <em>Pimentel</em></h1>
   <p class="about-block" data-i18n="about">
-    Profissional com sólida formação técnica em Mecatrônica e experiência prática em suporte de TI e produção industrial. Atualmente cursando Análise e Desenvolvimento de Sistemas, com foco no aprendizado de Python, SQL e Inteligência Artificial[cite: 5, 6].
+    Profissional com sólida formação técnica em Mecatrônica e experiência prática em suporte de TI e produção industrial. Atualmente cursando Análise e Desenvolvimento de Sistemas, com foco no aprendizado de Python, SQL e Inteligência Artificial.
   </p>
   
   <div class="formation-row">
     <div class="formation-card">
       <strong style="color:var(--purple-light); font-size: 0.7rem; text-transform: uppercase;" data-i18n="f_label1">Formação Superior</strong>
-      <p style="margin-top:0.5rem; font-weight:700;" data-i18n="f_title1">Análise e Desenvolvimento de Sistemas [cite: 9]</p>
-      <p style="font-size:0.8rem; color:var(--muted);">SENAI · Previsão 2027 [cite: 9, 10]</p>
+      <p style="margin-top:0.5rem; font-weight:700;" data-i18n="f_title1">Análise e Desenvolvimento de Sistemas</p>
+      <p style="font-size:0.8rem; color:var(--muted);">SENAI · Previsão 2027</p>
     </div>
     <div class="formation-card">
       <strong style="color:var(--purple-light); font-size: 0.7rem; text-transform: uppercase;" data-i18n="f_label2">Formação Técnica</strong>
-      <p style="margin-top:0.5rem; font-weight:700;" data-i18n="f_title2">Técnico em Mecatrônica [cite: 11]</p>
-      <p style="font-size:0.8rem; color:var(--muted);" data-i18n="f_concluded">Concluído em 2025 [cite: 12]</p>
+      <p style="margin-top:0.5rem; font-weight:700;" data-i18n="f_title2">Técnico em Mecatrônica</p>
+      <p style="font-size:0.8rem; color:var(--muted);" data-i18n="f_concluded">Concluído em 2025</p>
     </div>
   </div>
 
@@ -196,11 +196,11 @@ h1.hero-title em { font-style: normal; color: var(--purple-light); }
   <div class="skills-grid">
     <div class="skill-card">
       <p style="color:var(--purple-light); font-weight:700; font-size:0.8rem; margin-bottom:1rem;">DEV</p>
-      <span class="tag">Python [cite: 6]</span><span class="tag">SQL [cite: 6]</span><span class="tag">Inteligência Artificial [cite: 6, 13]</span>
+      <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Inteligência Artificial</span>
     </div>
     <div class="skill-card">
       <p style="color:var(--purple-light); font-weight:700; font-size:0.8rem; margin-bottom:1rem;">TECH</p>
-      <span class="tag">Hardware [cite: 19, 26]</span><span class="tag" data-i18n="sk_it">Suporte TI [cite: 20, 26]</span><span class="tag">Mecatrônica [cite: 17, 26]</span>
+      <span class="tag">Hardware</span><span class="tag" data-i18n="sk_it">Suporte TI</span><span class="tag">Mecatrônica</span>
     </div>
   </div>
 </section>
@@ -209,17 +209,17 @@ h1.hero-title em { font-style: normal; color: var(--purple-light); }
   <h2 style="margin-bottom: 2rem;" data-i18n="exp_title">Experiência Profissional</h2>
   <div class="exp-card" style="margin-bottom:1rem;">
     <div style="display:flex; justify-content:space-between;">
-      <strong>Alstom [cite: 15]</strong>
-      <span style="font-size:0.8rem; color:var(--purple-light);">Julho de 2025 - Março de 2026 [cite: 15]</span>
+      <strong>Alstom</strong>
+      <span style="font-size:0.8rem; color:var(--purple-light);">Julho de 2025 - Março de 2026</span>
     </div>
-    <p style="font-size:0.9rem; margin-top:0.5rem;" data-i18n="alstom_desc">Ajudante de Produção em projetos de grande escala: Metrô de SP e Santiago[cite: 15, 16].</p>
+    <p style="font-size:0.9rem; margin-top:0.5rem;" data-i18n="alstom_desc">Ajudante de Produção em projetos de grande escala: Metrô de SP e Santiago.</p>
   </div>
   <div class="exp-card">
     <div style="display:flex; justify-content:space-between;">
-      <strong>Soluções Usiminas [cite: 18]</strong>
-      <span style="font-size:0.8rem; color:var(--purple-light);">2024 - Junho de 2025 [cite: 18]</span>
+      <strong>Soluções Usiminas</strong>
+      <span style="font-size:0.8rem; color:var(--purple-light);">2024 - Junho de 2025</span>
     </div>
-    <p style="font-size:0.9rem; margin-top:0.5rem;" data-i18n="usiminas_desc">Aprendiz de TI responsável pela manutenção de hardware e suporte técnico[cite: 18, 19, 20].</p>
+    <p style="font-size:0.9rem; margin-top:0.5rem;" data-i18n="usiminas_desc">Aprendiz de TI responsável pela manutenção de hardware e suporte técnico.</p>
   </div>
 </section>
 
@@ -232,7 +232,7 @@ h1.hero-title em { font-style: normal; color: var(--purple-light); }
     </a>
     <a class="social-btn" href="mailto:jose1pimentel0@gmail.com">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      E-mail [cite: 3]
+      E-mail
     </a>
   </div>
 </section>
