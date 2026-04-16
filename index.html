@@ -63,8 +63,26 @@ nav {
 
 .nav-logo { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; color: var(--purple-light); }
 .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-.nav-links a { font-size: 0.82rem; font-weight: 500; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: 0.2s; position: relative; }
-.nav-links a:hover { color: var(--text); }
+
+/* EFEITO DE BRILHO NAS OPÇÕES DO MENU */
+.nav-links a { 
+  font-size: 0.82rem; 
+  font-weight: 500; 
+  text-transform: uppercase; 
+  color: var(--muted); 
+  text-decoration: none; 
+  transition: all 0.3s ease; 
+  position: relative;
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+
+.nav-links a:hover { 
+  color: var(--purple-light); 
+  text-shadow: 0 0 8px var(--purple-glow); /* Brilho no texto */
+  background: var(--purple-subtle); /* Sombreado de fundo leve */
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.2); /* Sombreado externo roxo */
+}
 
 .lang-toggle { display: flex; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
 .lang-btn { padding: 5px 12px; background: transparent; border: none; color: var(--muted); font-size: 0.72rem; cursor: pointer; transition: 0.2s; }
@@ -126,25 +144,25 @@ h1.hero-title em { font-style: normal; color: var(--purple-light); }
 </nav>
 
 <section id="perfil">
-  <h1 class="hero-title">José <em>Pimentel</em></h1>
+  <h1 class="hero-title">José <em>Pimentel</em> [cite: 1]</h1>
   <p class="about-block" data-i18n="about">
-    Desenvolvedor com base técnica sólida em Mecatrônica e experiência prática em ambientes industriais de alta precisão. Atualmente focado em ADS, unindo o raciocínio lógico da automação com o desenvolvimento de software para criar soluções eficientes em Python, SQL e IA.
+    Profissional com sólida formação técnica em Mecatrônica e experiência prática em suporte de TI e produção industrial. Atualmente cursando Análise e Desenvolvimento de Sistemas, com foco no aprendizado de Python, SQL e Inteligência Artificial[cite: 5, 6].
   </p>
   
   <div class="formation-row">
     <div class="formation-card">
       <strong style="color:var(--purple-light); font-size: 0.7rem; text-transform: uppercase;" data-i18n="f_label1">Formação Superior</strong>
-      <p style="margin-top:0.5rem; font-weight:700;" data-i18n="f_title1">Análise e Desenvolvimento de Sistemas</p>
-      <p style="font-size:0.8rem; color:var(--muted);">SENAI Taubaté · 2025–2027</p>
+      <p style="margin-top:0.5rem; font-weight:700;" data-i18n="f_title1">Análise e Desenvolvimento de Sistemas [cite: 9]</p>
+      <p style="font-size:0.8rem; color:var(--muted);">SENAI · Previsão 2027 [cite: 9, 10]</p>
     </div>
     <div class="formation-card">
       <strong style="color:var(--purple-light); font-size: 0.7rem; text-transform: uppercase;" data-i18n="f_label2">Formação Técnica</strong>
-      <p style="margin-top:0.5rem; font-weight:700;" data-i18n="f_title2">Técnico em Mecatrônica</p>
-      <p style="font-size:0.8rem; color:var(--muted);" data-i18n="f_concluded">Concluído · 2025</p>
+      <p style="margin-top:0.5rem; font-weight:700;" data-i18n="f_title2">Técnico em Mecatrônica [cite: 11]</p>
+      <p style="font-size:0.8rem; color:var(--muted);" data-i18n="f_concluded">Concluído em 2025 [cite: 12]</p>
     </div>
   </div>
 
-  <a href="https://docs.google.com/document/d/1SL9lQdC29JfXIG1wj2N_UaAx_SaOO7gDY8kSLKbsDy4/export?format=pdf" class="cv-btn">
+  <a href="#" class="cv-btn">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     <span data-i18n="dl_cv">Download CV</span>
   </a>
@@ -155,7 +173,7 @@ h1.hero-title em { font-style: normal; color: var(--purple-light); }
   <div class="projects-grid">
     <div class="project-card">
       <h3 data-i18n="proj1_title">Automação Industrial com CLP Siemens</h3>
-      <p data-i18n="proj1_desc">Implementação e programação de controladores lógicos programáveis para otimização de processos industriais.</p>
+      <p data-i18n="proj1_desc">Foco em CLP Siemens e automação industrial.</p>
       <a href="https://www.linkedin.com/posts/jos%C3%A9-pimentel-de-oliveira-643b5a3aa_automaaexaetoindustrial-clp-siemens-ugcPost-7450308954196230145-Mn7T" target="_blank" class="project-link">
         Ver no LinkedIn 
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -164,7 +182,7 @@ h1.hero-title em { font-style: normal; color: var(--purple-light); }
 
     <div class="project-card">
       <h3 data-i18n="proj2_title">Sistemas Integrados de Mecatrônica</h3>
-      <p data-i18n="proj2_desc">Desenvolvimento técnico realizado no SENAI abrangendo mecânica, eletrônica e controle para soluções industriais.</p>
+      <p data-i18n="proj2_desc">Desenvolvimento técnico industrial realizado no SENAI.</p>
       <a href="https://www.linkedin.com/posts/jos%C3%A9-pimentel-de-oliveira-643b5a3aa_mecatraeknica-senai-indaeqstria-ugcPost-7450343383799267328-gZI5" target="_blank" class="project-link">
         Ver no LinkedIn
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -178,11 +196,11 @@ h1.hero-title em { font-style: normal; color: var(--purple-light); }
   <div class="skills-grid">
     <div class="skill-card">
       <p style="color:var(--purple-light); font-weight:700; font-size:0.8rem; margin-bottom:1rem;">DEV</p>
-      <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">UML</span>
+      <span class="tag">Python [cite: 6]</span><span class="tag">SQL [cite: 6]</span><span class="tag">Inteligência Artificial [cite: 6, 13]</span>
     </div>
     <div class="skill-card">
       <p style="color:var(--purple-light); font-weight:700; font-size:0.8rem; margin-bottom:1rem;">TECH</p>
-      <span class="tag">Hardware</span><span class="tag" data-i18n="sk_it">Suporte TI</span><span class="tag">Mecatrônica</span>
+      <span class="tag">Hardware [cite: 19, 26]</span><span class="tag" data-i18n="sk_it">Suporte TI [cite: 20, 26]</span><span class="tag">Mecatrônica [cite: 17, 26]</span>
     </div>
   </div>
 </section>
@@ -191,38 +209,30 @@ h1.hero-title em { font-style: normal; color: var(--purple-light); }
   <h2 style="margin-bottom: 2rem;" data-i18n="exp_title">Experiência Profissional</h2>
   <div class="exp-card" style="margin-bottom:1rem;">
     <div style="display:flex; justify-content:space-between;">
-      <strong>Alstom</strong>
-      <span style="font-size:0.8rem; color:var(--purple-light);">2025 - 2026</span>
+      <strong>Alstom [cite: 15]</strong>
+      <span style="font-size:0.8rem; color:var(--purple-light);">Julho de 2025 - Março de 2026 [cite: 15]</span>
     </div>
-    <p style="font-size:0.9rem; margin-top:0.5rem;" data-i18n="alstom_desc">Projetos Linha 6 (SP) e Linha 7 (Santiago). Montagem mecânica especializada.</p>
+    <p style="font-size:0.9rem; margin-top:0.5rem;" data-i18n="alstom_desc">Ajudante de Produção em projetos de grande escala: Metrô de SP e Santiago[cite: 15, 16].</p>
   </div>
   <div class="exp-card">
     <div style="display:flex; justify-content:space-between;">
-      <strong>Soluções Usiminas</strong>
-      <span style="font-size:0.8rem; color:var(--purple-light);">2024 - 2025</span>
+      <strong>Soluções Usiminas [cite: 18]</strong>
+      <span style="font-size:0.8rem; color:var(--purple-light);">2024 - Junho de 2025 [cite: 18]</span>
     </div>
-    <p style="font-size:0.9rem; margin-top:0.5rem;" data-i18n="usiminas_desc">Suporte de TI e manutenção de hardware.</p>
+    <p style="font-size:0.9rem; margin-top:0.5rem;" data-i18n="usiminas_desc">Aprendiz de TI responsável pela manutenção de hardware e suporte técnico[cite: 18, 19, 20].</p>
   </div>
 </section>
 
 <section id="contato">
   <h2 style="margin-bottom: 2rem;" data-i18n="contact_title">Contato</h2>
   <div class="social-row">
-    <a class="social-btn" href="https://www.linkedin.com/in/josé-pimentel-de-oliveira-643b5a3aa" target="_blank">
+    <a class="social-btn" href="https://www.linkedin.com/in/jos%C3%A9-pimentel-de-oliveira-643b5a3aa" target="_blank">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
       LinkedIn
     </a>
-    <a class="social-btn" href="https://github.com/jose1pimentel0" target="_blank">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-      GitHub
-    </a>
-    <a class="social-btn" href="https://www.instagram.com/ze.06z?igsh=MTd4aGUzZWNsYWQz" target="_blank">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      Instagram
-    </a>
     <a class="social-btn" href="mailto:jose1pimentel0@gmail.com">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      E-mail
+      E-mail [cite: 3]
     </a>
   </div>
 </section>
@@ -231,31 +241,31 @@ h1.hero-title em { font-style: normal; color: var(--purple-light); }
 const translations = {
   pt: {
     nav_profile: "Perfil", nav_projects: "Projetos", nav_skills: "Skills", nav_exp: "Experiência", nav_contact: "Contato",
-    about: "Desenvolvedor com base técnica sólida em Mecatrônica e experiência prática em ambientes industriais de alta precisão. Atualmente focado em ADS, unindo o raciocínio lógico da automação com o desenvolvimento de software para criar soluções eficientes em Python, SQL e IA.",
+    about: "Profissional com sólida formação técnica em Mecatrônica e experiência prática em suporte de TI e produção industrial. Atualmente cursando Análise e Desenvolvimento de Sistemas, com foco no aprendizado de Python, SQL e Inteligência Artificial.",
     f_label1: "Formação Superior", f_title1: "Análise e Desenvolvimento de Sistemas",
-    f_label2: "Formação Técnica", f_title2: "Técnico em Mecatrônica", f_concluded: "Concluído · 2025",
+    f_label2: "Formação Técnica", f_title2: "Técnico em Mecatrônica", f_concluded: "Concluído em 2025",
     dl_cv: "Download CV", skills_title: "Skills & Tecnologias", sk_it: "Suporte TI",
     exp_title: "Experiência Profissional", contact_title: "Contato",
-    alstom_desc: "Projetos Linha 6 (SP) e Linha 7 (Santiago). Montagem mecânica especializada.",
-    usiminas_desc: "Suporte de TI e manutenção de hardware.",
+    alstom_desc: "Ajudante de Produção em projetos de grande escala: Metrô de SP e Santiago.",
+    usiminas_desc: "Aprendiz de TI responsável pela manutenção de hardware e suporte técnico.",
     proj1_title: "Automação Industrial com CLP Siemens",
-    proj1_desc: "Implementação e programação de controladores lógicos programáveis para otimização de processos industriais.",
+    proj1_desc: "Foco em CLP Siemens e automação industrial.",
     proj2_title: "Sistemas Integrados de Mecatrônica",
-    proj2_desc: "Desenvolvimento técnico realizado no SENAI abrangendo mecânica, eletrônica e controle para soluções industriais."
+    proj2_desc: "Desenvolvimento técnico industrial realizado no SENAI."
   },
   en: {
     nav_profile: "Profile", nav_projects: "Projects", nav_skills: "Skills", nav_exp: "Experience", nav_contact: "Contact",
-    about: "Developer with a solid technical background in Mechatronics and hands-on experience in high-precision industrial environments. Focused on bridging automation logic with software development (Python, SQL, AI).",
+    about: "Professional with a solid technical background in Mechatronics and practical experience in IT support and industrial production. Currently studying Systems Analysis and Development, focusing on Python, SQL, and AI.",
     f_label1: "Higher Education", f_title1: "Systems Analysis and Development",
-    f_label2: "Technical Training", f_title2: "Mechatronics Technician", f_concluded: "Completed · 2025",
+    f_label2: "Technical Training", f_title2: "Mechatronics Technician", f_concluded: "Completed in 2025",
     dl_cv: "Download CV", skills_title: "Skills & Technologies", sk_it: "IT Support",
     exp_title: "Work Experience", contact_title: "Contact",
-    alstom_desc: "Lines 6 (SP) and 7 (Santiago) projects. Specialized mechanical assembly.",
-    usiminas_desc: "IT support and hardware maintenance.",
+    alstom_desc: "Production Assistant on large-scale projects: Sao Paulo and Santiago Metro.",
+    usiminas_desc: "IT Apprentice responsible for hardware maintenance and technical support.",
     proj1_title: "Industrial Automation with Siemens PLC",
-    proj1_desc: "Implementation and programming of programmable logic controllers for industrial process optimization.",
+    proj1_desc: "Focus on Siemens PLC and industrial automation.",
     proj2_title: "Integrated Mechatronics Systems",
-    proj2_desc: "Technical development at SENAI covering mechanics, electronics, and control for industrial solutions."
+    proj2_desc: "Industrial technical development carried out at SENAI."
   }
 };
 
