@@ -80,9 +80,14 @@ h1.hero-title em { font-style: normal; color: var(--purple-light); }
 .about-block { background: var(--bg3); border-left: 2px solid var(--purple); padding: 1.5rem; color: var(--muted2); margin-bottom: 2.5rem; }
 
 /* CARDS */
-.formation-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2.5rem; }
-.formation-card, .skill-card, .exp-card, .contact-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: 0.25s; }
-.skill-card:hover, .exp-card:hover { border-color: var(--border2); }
+.formation-row, .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2.5rem; }
+.formation-card, .skill-card, .exp-card, .project-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: 0.25s; }
+.skill-card:hover, .exp-card:hover, .project-card:hover { border-color: var(--border2); transform: translateY(-4px); }
+
+/* PROJECT CARD SPECIFIC */
+.project-card h3 { font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text); }
+.project-card p { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem; }
+.project-link { color: var(--purple-light); text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; display: flex; align-items: center; gap: 0.5rem; }
 
 /* BUTTONS */
 .cv-btn, .social-btn { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.8rem 1.9rem; border-radius: 8px; font-family: var(--font-display); font-weight: 700; cursor: pointer; text-decoration: none; transition: 0.2s; }
@@ -98,7 +103,7 @@ h1.hero-title em { font-style: normal; color: var(--purple-light); }
 .tag { display: inline-block; padding: 4px 10px; background: var(--purple-subtle); border: 1px solid var(--border2); color: var(--purple-light); border-radius: 6px; font-size: 0.75rem; margin: 2px; }
 
 @media (max-width: 700px) {
-  .formation-row { grid-template-columns: 1fr; }
+  .formation-row, .projects-grid { grid-template-columns: 1fr; }
   .nav-links { display: none; }
 }
 </style>
@@ -109,6 +114,7 @@ h1.hero-title em { font-style: normal; color: var(--purple-light); }
   <span class="nav-logo">JP</span>
   <ul class="nav-links">
     <li><a href="#perfil" data-i18n="nav_profile">Perfil</a></li>
+    <li><a href="#projetos" data-i18n="nav_projects">Projetos</a></li>
     <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
     <li><a href="#experiencia" data-i18n="nav_exp">Experiência</a></li>
     <li><a href="#contato" data-i18n="nav_contact">Contato</a></li>
@@ -142,6 +148,29 @@ h1.hero-title em { font-style: normal; color: var(--purple-light); }
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     <span data-i18n="dl_cv">Download CV</span>
   </a>
+</section>
+
+<section id="projetos">
+  <h2 style="margin-bottom: 2rem;" data-i18n="nav_projects">Projetos</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <h3 data-i18n="proj1_title">Automação Industrial com CLP Siemens</h3>
+      <p data-i18n="proj1_desc">Implementação e programação de controladores lógicos programáveis para otimização de processos industriais.</p>
+      <a href="https://www.linkedin.com/posts/jos%C3%A9-pimentel-de-oliveira-643b5a3aa_automaaexaetoindustrial-clp-siemens-ugcPost-7450308954196230145-Mn7T" target="_blank" class="project-link">
+        Ver no LinkedIn 
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+
+    <div class="project-card">
+      <h3 data-i18n="proj2_title">Sistemas Integrados de Mecatrônica</h3>
+      <p data-i18n="proj2_desc">Desenvolvimento técnico realizado no SENAI abrangendo mecânica, eletrônica e controle para soluções industriais.</p>
+      <a href="https://www.linkedin.com/posts/jos%C3%A9-pimentel-de-oliveira-643b5a3aa_mecatraeknica-senai-indaeqstria-ugcPost-7450343383799267328-gZI5" target="_blank" class="project-link">
+        Ver no LinkedIn
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+  </div>
 </section>
 
 <section id="skills">
@@ -201,24 +230,32 @@ h1.hero-title em { font-style: normal; color: var(--purple-light); }
 <script>
 const translations = {
   pt: {
-    nav_profile: "Perfil", nav_skills: "Skills", nav_exp: "Experiência", nav_contact: "Contato",
+    nav_profile: "Perfil", nav_projects: "Projetos", nav_skills: "Skills", nav_exp: "Experiência", nav_contact: "Contato",
     about: "Desenvolvedor com base técnica sólida em Mecatrônica e experiência prática em ambientes industriais de alta precisão. Atualmente focado em ADS, unindo o raciocínio lógico da automação com o desenvolvimento de software para criar soluções eficientes em Python, SQL e IA.",
     f_label1: "Formação Superior", f_title1: "Análise e Desenvolvimento de Sistemas",
     f_label2: "Formação Técnica", f_title2: "Técnico em Mecatrônica", f_concluded: "Concluído · 2025",
     dl_cv: "Download CV", skills_title: "Skills & Tecnologias", sk_it: "Suporte TI",
     exp_title: "Experiência Profissional", contact_title: "Contato",
     alstom_desc: "Projetos Linha 6 (SP) e Linha 7 (Santiago). Montagem mecânica especializada.",
-    usiminas_desc: "Suporte de TI e manutenção de hardware."
+    usiminas_desc: "Suporte de TI e manutenção de hardware.",
+    proj1_title: "Automação Industrial com CLP Siemens",
+    proj1_desc: "Implementação e programação de controladores lógicos programáveis para otimização de processos industriais.",
+    proj2_title: "Sistemas Integrados de Mecatrônica",
+    proj2_desc: "Desenvolvimento técnico realizado no SENAI abrangendo mecânica, eletrônica e controle para soluções industriais."
   },
   en: {
-    nav_profile: "Profile", nav_skills: "Skills", nav_exp: "Experience", nav_contact: "Contact",
+    nav_profile: "Profile", nav_projects: "Projects", nav_skills: "Skills", nav_exp: "Experience", nav_contact: "Contact",
     about: "Developer with a solid technical background in Mechatronics and hands-on experience in high-precision industrial environments. Focused on bridging automation logic with software development (Python, SQL, AI).",
     f_label1: "Higher Education", f_title1: "Systems Analysis and Development",
     f_label2: "Technical Training", f_title2: "Mechatronics Technician", f_concluded: "Completed · 2025",
     dl_cv: "Download CV", skills_title: "Skills & Technologies", sk_it: "IT Support",
     exp_title: "Work Experience", contact_title: "Contact",
     alstom_desc: "Lines 6 (SP) and 7 (Santiago) projects. Specialized mechanical assembly.",
-    usiminas_desc: "IT support and hardware maintenance."
+    usiminas_desc: "IT support and hardware maintenance.",
+    proj1_title: "Industrial Automation with Siemens PLC",
+    proj1_desc: "Implementation and programming of programmable logic controllers for industrial process optimization.",
+    proj2_title: "Integrated Mechatronics Systems",
+    proj2_desc: "Technical development at SENAI covering mechanics, electronics, and control for industrial solutions."
   }
 };
 
