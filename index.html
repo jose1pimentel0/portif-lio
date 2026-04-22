@@ -19,7 +19,6 @@
   --purple-glow: rgba(124, 58, 237, 0.35);
   --bg: #07070a;
   --bg2: rgba(17, 17, 24, 0.8);
-  --bg3: rgba(24, 24, 31, 0.9);
   --text: #ede9f8;
   --muted: #8a8599;
   --muted2: #c4bede;
@@ -51,11 +50,6 @@ body::before {
   pointer-events: none;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--purple); border-radius: 10px; }
-
 /* Navegação */
 nav {
   position: fixed;
@@ -84,114 +78,77 @@ nav {
   letter-spacing: 1.5px;
   color: var(--muted); 
   text-decoration: none; 
-  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+  transition: 0.3s; 
 }
-.nav-links a:hover { color: var(--text); text-shadow: 0 0 10px var(--purple-light); }
+.nav-links a:hover { color: var(--text); }
 
-/* Seletor de Idiomas */
-.lang-toggle { display: flex; gap: 4px; background: rgba(255,255,255,0.05); border-radius: 30px; padding: 4px; border: 1px solid var(--border); }
+/* Seletor de Idiomas (Apenas PT e EN) */
+.lang-toggle { 
+  display: flex; 
+  gap: 4px; 
+  background: rgba(255,255,255,0.05); 
+  border-radius: 30px; 
+  padding: 4px; 
+  border: 1px solid var(--border); 
+}
 .lang-btn { 
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 12px; 
+  gap: 8px;
+  padding: 6px 14px; 
   background: transparent; 
   border: none; 
   color: var(--muted); 
-  font-size: 0.65rem; 
+  font-size: 0.75rem; 
   cursor: pointer; 
   border-radius: 20px; 
   transition: 0.3s; 
   font-weight: 800; 
 }
-.lang-btn img { width: 14px; height: 14px; border-radius: 50%; object-fit: cover; }
+.lang-btn img { width: 18px; height: 18px; border-radius: 50%; object-fit: cover; }
 .lang-btn.active { background: var(--purple); color: #fff; box-shadow: 0 4px 12px var(--purple-glow); }
 
 /* Seções */
 section { padding: 10rem 2.5rem; max-width: 1100px; margin: 0 auto; }
 
-/* Perfil / Hero */
+/* Perfil */
 #perfil { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
 h1.hero-title { font-family: var(--font-display); font-size: clamp(3.5rem, 10vw, 6rem); font-weight: 800; line-height: 0.9; margin-bottom: 2.5rem; letter-spacing: -3px; }
-h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--purple-light), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-.about-block { font-size: 1.2rem; color: #b4acc7; max-width: 750px; margin-bottom: 4rem; line-height: 1.8; border-left: 3px solid var(--purple); padding-left: 20px; }
+.about-block { font-size: 1.2rem; color: #b4acc7; max-width: 850px; margin-bottom: 4rem; border-left: 3px solid var(--purple); padding-left: 20px; line-height: 1.8; }
 
-/* Cards com Glassmorphism */
-.formation-card, .project-card, .skill-card, .exp-card { 
+/* Cards */
+.formation-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.formation-card, .exp-card { 
   background: var(--bg2); 
   border: 1px solid var(--border); 
   backdrop-filter: blur(10px); 
   border-radius: 24px; 
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  padding: 2.5rem; 
+  transition: 0.4s;
 }
+.formation-card:hover, .exp-card:hover { border-color: var(--purple-light); transform: translateY(-5px); }
 
-/* Formação */
-.formation-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-.formation-card { padding: 2.5rem; position: relative; }
-.formation-card:hover { border-color: rgba(124, 58, 237, 0.4); background: rgba(124, 58, 237, 0.05); transform: translateY(-5px); }
-
-/* Projetos */
-.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-.project-card { overflow: hidden; height: 100%; }
-.project-card:hover { border-color: var(--cyan); transform: scale(1.02); }
-.project-img { width: 100%; height: 220px; object-fit: cover; border-bottom: 1px solid var(--border); }
-.project-content { padding: 2rem; }
-.project-link { color: var(--cyan); text-decoration: none; font-weight: 800; font-size: 0.8rem; letter-spacing: 1px; transition: 0.2s; }
-
-/* Skills */
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-.skill-card { padding: 2rem; }
-.tag { display: inline-block; padding: 8px 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); color: var(--muted); border-radius: 12px; font-size: 0.8rem; font-weight: 600; margin: 4px; transition: 0.3s; }
-.tag:hover { background: var(--purple-glow); color: var(--purple-light); border-color: var(--purple-light); }
-.tag.featured { border-color: var(--cyan); color: var(--cyan); }
-
-/* Experiência Profissional */
-.exp-card { padding: 2.5rem; margin-bottom: 2.5rem; } /* Afastamento entre Alstom e Usiminas */
+.exp-card { margin-bottom: 2.5rem; }
 .exp-card:last-child { margin-bottom: 0; }
-.exp-card:hover { border-color: var(--purple-light); background: rgba(124, 58, 237, 0.05); transform: translateY(-5px); }
 
-/* Contato */
-#contato { text-align: center; }
-.social-row { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-top: 3rem; }
-.social-btn { 
-  display: inline-flex; 
-  align-items: center; 
-  gap: 12px; 
-  padding: 1.2rem 2.5rem; 
-  background: var(--bg2); 
-  border: 1px solid var(--border); 
-  color: #fff; 
-  border-radius: 100px; 
-  text-decoration: none; 
-  font-weight: 800; 
-  font-size: 0.9rem;
-  transition: 0.4s; 
-}
-.social-btn:hover { border-color: var(--cyan); box-shadow: 0 10px 30px rgba(6, 182, 212, 0.2); transform: translateY(-5px); }
-
-/* Botões */
+/* Botão Download CV */
 .cv-btn { 
-  display: inline-block; 
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   background: var(--purple); 
   color: #fff; 
   padding: 1.2rem 3rem; 
-  border-radius: 100px; 
+  border-radius: 12px; 
   text-decoration: none; 
   font-weight: 800; 
-  text-transform: uppercase; 
-  letter-spacing: 2px;
-  font-size: 0.8rem;
-  box-shadow: 0 15px 35px var(--purple-glow);
+  font-size: 1rem;
   transition: 0.4s;
 }
-.cv-btn:hover { transform: translateY(-5px); filter: brightness(1.1); box-shadow: 0 20px 45px rgba(124, 58, 237, 0.5); }
+.cv-btn:hover { filter: brightness(1.1); transform: translateY(-3px); }
 
-@media (max-width: 850px) {
-  .nav-links { display: none; }
-  .formation-row, .projects-grid { grid-template-columns: 1fr; }
-  h1.hero-title { font-size: 4rem; }
-}
+@media (max-width: 850px) { .nav-links { display: none; } .formation-row { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -200,36 +157,34 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
   <div class="nav-logo"><i>{</i><span>J</span>P<i>}</i></div>
   <ul class="nav-links">
     <li><a href="#perfil" data-i18n="nav_profile">Perfil</a></li>
-    <li><a href="#projetos" data-i18n="nav_projects">Projetos</a></li>
-    <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
     <li><a href="#experiencia" data-i18n="nav_exp">Experiência</a></li>
     <li><a href="#contato" data-i18n="nav_contact">Contato</a></li>
   </ul>
   <div class="lang-toggle">
-    <button class="lang-btn active" onclick="setLang('pt')">
-      <img src="https://flagcdn.com/w40/br.png" alt="PT"> PT
+    <button class="lang-btn active" id="btn-pt" onclick="setLang('pt')">
+      <img src="https://flagcdn.com/w40/br.png" alt="Brasil"> PT
     </button>
-    <button class="lang-btn" onclick="setLang('en')">
-      <img src="https://flagcdn.com/w40/us.png" alt="EN"> EN
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">
+      <img src="https://flagcdn.com/w40/us.png" alt="USA"> EN
     </button>
   </div>
 </nav>
 
 <section id="perfil">
   <div class="reveal">
-    <h1 class="hero-title">José <br><em>Pimentel</em></h1>
+    <h1 class="hero-title">José Pimentel</h1>
     <p class="about-block" data-i18n="about">
-      Profissional com sólida formação técnica em Mecatrônica e experiência prática em suporte de TI e produção industrial. Atualmente cursando Análise e Desenvolvimento de Sistemas.
+      Profissional com sólida formação técnica em Mecatrônica e experiência prática em suporte de TI e produção industrial. Atualmente cursando Análise e Desenvolvimento de Sistemas, com foco no aprendizado de Python, SQL e Inteligência Artificial.
     </p>
     
     <div class="formation-row">
       <div class="formation-card">
-        <small style="color:var(--cyan); font-weight:900;" data-i18n="f_label1">FORMAÇÃO SUPERIOR</small>
+        <small style="color:var(--purple-light); font-weight:900; text-transform: uppercase;" data-i18n="f_label1">Formação Superior</small>
         <h3 style="margin: 0.8rem 0; font-family: var(--font-display);" data-i18n="f_title1">Análise e Desenvolvimento de Sistemas</h3>
         <p style="font-size:0.9rem; color:var(--muted);">SENAI · Previsão 2027</p>
       </div>
       <div class="formation-card">
-        <small style="color:var(--purple-light); font-weight:900;" data-i18n="f_label2">FORMAÇÃO TÉCNICA</small>
+        <small style="color:var(--purple-light); font-weight:900; text-transform: uppercase;" data-i18n="f_label2">Formação Técnica</small>
         <h3 style="margin: 0.8rem 0; font-family: var(--font-display);" data-i18n="f_title2">Técnico em Mecatrônica</h3>
         <p style="font-size:0.9rem; color:var(--muted);" data-i18n="f_concluded">Concluído em 2025</p>
       </div>
@@ -237,85 +192,33 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
 
     <div style="margin-top: 4rem;">
       <a href="https://docs.google.com/document/d/1SL9lQdC29JfXIG1wj2N_UaAx_SaOO7gDY8kSLKbsDy4/edit?usp=sharing" target="_blank" class="cv-btn">
-        <span data-i18n="dl_cv">Download CV</span>
+        <span>↓ Download CV</span>
       </a>
-    </div>
-  </div>
-</section>
-
-<section id="projetos">
-  <h2 style="margin-bottom: 4rem; font-family: var(--font-display); font-size: 3rem;" class="reveal" data-i18n="nav_projects">Projetos</h2>
-  <div class="projects-grid">
-    <div class="project-card reveal">
-      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="CLP" class="project-img">
-      <div class="project-content">
-        <h3 data-i18n="proj1_title">Automação Industrial</h3>
-        <p style="font-size: 0.9rem; color: var(--muted); margin: 1rem 0 2rem 0;" data-i18n="proj1_desc">Programação de CLP Siemens para linhas de produção automatizadas.</p>
-        <a href="https://www.linkedin.com/posts/jos%C3%A9-pimentel-de-oliveira-643b5a3aa_automaaexaetoindustrial-clp-siemens-ugcPost-7450308954196230145-Mn7T" target="_blank" class="project-link">
-          <span data-i18n="view_linkedin">LINKEDIN</span> ➔
-        </a>
-      </div>
-    </div>
-    <div class="project-card reveal">
-      <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=80" alt="Mecatrônica" class="project-img">
-      <div class="project-content">
-        <h3 data-i18n="proj2_title">Sistemas Integrados</h3>
-        <p style="font-size: 0.9rem; color: var(--muted); margin: 1rem 0 2rem 0;" data-i18n="proj2_desc">Integração de hardware e software industrial no SENAI.</p>
-        <a href="https://www.linkedin.com/posts/jos%C3%A9-pimentel-de-oliveira-643b5a3aa_mecatraeknica-senai-indaeqstria-ugcPost-7450343383799267328-gZI5" target="_blank" class="project-link">
-          <span data-i18n="view_linkedin">LINKEDIN</span> ➔
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="skills">
-  <h2 style="margin-bottom: 4rem; font-family: var(--font-display); font-size: 3rem;" class="reveal" data-i18n="skills_title">Skills & Tecnologias</h2>
-  <div class="skills-grid">
-    <div class="skill-card reveal">
-      <strong style="color: var(--cyan); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px;">Software & Dev</strong>
-      <div style="margin-top:1.5rem;">
-        <span class="tag featured">Python</span><span class="tag featured">SQL</span><span class="tag">Artificial Intelligence</span><span class="tag">HTML/CSS/JS</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <strong style="color: var(--purple-light); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px;">Hardware & Industry</strong>
-      <div style="margin-top:1.5rem;">
-        <span class="tag">Hardware</span><span class="tag featured" data-i18n="sk_it">Suporte TI</span><span class="tag">CLP Siemens</span><span class="tag">Mecatrônica</span>
-      </div>
     </div>
   </div>
 </section>
 
 <section id="experiencia">
   <h2 style="margin-bottom: 4rem; font-family: var(--font-display); font-size: 3rem;" class="reveal" data-i18n="exp_title">Experiência Profissional</h2>
+  
   <div class="exp-card reveal">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap: wrap; gap: 10px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap: wrap;">
       <strong style="font-size: 1.4rem;">Alstom</strong>
-      <span style="font-size:0.8rem; color:var(--cyan); font-weight:800;" data-i18n="exp_date1">Julho de 2025 - Março de 2026</span>
+      <span style="font-size:0.85rem; color:var(--cyan); font-weight:800;" data-i18n="exp_date1">Julho de 2025 - Março de 2026</span>
     </div>
-    <p style="color: var(--muted2); font-size: 1.1rem;" data-i18n="alstom_desc">Ajudante de Produção em projetos de grande escala: Metrô de SP e Santiago.</p>
+    <p style="color: var(--muted2);" data-i18n="alstom_desc">Ajudante de Produção em projetos de grande escala: Metrô de SP e Santiago.</p>
   </div>
-  <div class="exp-card reveal">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap: wrap; gap: 10px;">
-      <strong style="font-size: 1.4rem;">Soluções Usiminas</strong>
-      <span style="font-size:0.8rem; color:var(--cyan); font-weight:800;" data-i18n="exp_date2">2024 - Junho de 2025</span>
-    </div>
-    <p style="color: var(--muted2); font-size: 1.1rem;" data-i18n="usiminas_desc">Aprendiz de TI responsável pela manutenção de hardware e suporte técnico.</p>
-  </div>
-</section>
 
-<section id="contato">
-  <h2 style="margin-bottom: 2rem; font-family: var(--font-display); font-size: 3.5rem;" class="reveal" data-i18n="contact_title">Vamos conversar?</h2>
-  <div class="social-row reveal">
-    <a class="social-btn" href="https://www.linkedin.com/in/jos%C3%A9-pimentel-de-oliveira-643b5a3aa" target="_blank">LinkedIn</a>
-    <a class="social-btn" href="mailto:jose1pimentel0@gmail.com">E-mail</a>
-    <a class="social-btn" href="https://www.instagram.com/ze.06z?igsh=MTd4aGUzZWNsYWQz" target="_blank">Instagram</a>
+  <div class="exp-card reveal">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap: wrap;">
+      <strong style="font-size: 1.4rem;">Soluções Usiminas</strong>
+      <span style="font-size:0.85rem; color:var(--cyan); font-weight:800;" data-i18n="exp_date2">2024 - Junho de 2025</span>
+    </div>
+    <p style="color: var(--muted2);" data-i18n="usiminas_desc">Aprendiz de TI responsável pela manutenção de hardware e suporte técnico.</p>
   </div>
 </section>
 
 <script>
-// Animações de Scroll
 ScrollReveal().reveal('.reveal', {
   distance: '40px',
   duration: 1000,
@@ -326,27 +229,21 @@ ScrollReveal().reveal('.reveal', {
 
 const translations = {
   pt: {
-    nav_profile: "Perfil", nav_projects: "Projetos", nav_skills: "Skills", nav_exp: "Experiência", nav_contact: "Contato",
-    about: "Profissional com sólida formação técnica em Mecatrônica e experiência prática em suporte de TI e produção industrial. Atualmente cursando Análise e Desenvolvimento de Sistemas.",
-    f_label1: "FORMAÇÃO SUPERIOR", f_title1: "Análise e Desenvolvimento de Sistemas",
-    f_label2: "FORMAÇÃO TÉCNICA", f_title2: "Técnico em Mecatrônica", f_concluded: "Concluído em 2025",
-    dl_cv: "Download CV", view_linkedin: "LINKEDIN",
-    proj1_title: "Automação Industrial", proj1_desc: "Programação de CLP Siemens para linhas de produção automatizadas.",
-    proj2_title: "Sistemas Integrados", proj2_desc: "Integração de hardware e software industrial no SENAI.",
-    skills_title: "Skills & Tecnologias", sk_it: "Suporte TI", exp_title: "Experiência Profissional", contact_title: "Vamos conversar?",
+    nav_profile: "Perfil", nav_exp: "Experiência", nav_contact: "Contato",
+    about: "Profissional com sólida formação técnica em Mecatrônica e experiência prática em suporte de TI e produção industrial. Atualmente cursando Análise e Desenvolvimento de Sistemas, com foco no aprendizado de Python, SQL e Inteligência Artificial.",
+    f_label1: "Formação Superior", f_title1: "Análise e Desenvolvimento de Sistemas",
+    f_label2: "Formação Técnica", f_title2: "Técnico em Mecatrônica", f_concluded: "Concluído em 2025",
+    exp_title: "Experiência Profissional",
     alstom_desc: "Ajudante de Produção em projetos de grande escala: Metrô de SP e Santiago.",
     usiminas_desc: "Aprendiz de TI responsável pela manutenção de hardware e suporte técnico.",
     exp_date1: "Julho de 2025 - Março de 2026", exp_date2: "2024 - Junho de 2025"
   },
   en: {
-    nav_profile: "Profile", nav_projects: "Projects", nav_skills: "Skills", nav_exp: "Experience", nav_contact: "Contact",
-    about: "Professional with a solid technical background in Mechatronics and practical experience in IT support and industrial production. Currently studying Systems Analysis.",
-    f_label1: "HIGHER EDUCATION", f_title1: "Systems Analysis and Development",
-    f_label2: "TECHNICAL EDUCATION", f_title2: "Mechatronics Technician", f_concluded: "Completed in 2025",
-    dl_cv: "Download CV", view_linkedin: "LINKEDIN",
-    proj1_title: "Industrial Automation", proj1_desc: "Siemens PLC programming for automated production lines.",
-    proj2_title: "Integrated Systems", proj2_desc: "Integration of industrial hardware and software at SENAI.",
-    skills_title: "Skills & Tech", sk_it: "IT Support", exp_title: "Professional Experience", contact_title: "Let's talk?",
+    nav_profile: "Profile", nav_exp: "Experience", nav_contact: "Contact",
+    about: "Professional with a solid technical background in Mechatronics and practical experience in IT support and industrial production. Currently pursuing a degree in Systems Analysis and Development, focusing on Python, SQL, and Artificial Intelligence.",
+    f_label1: "Higher Education", f_title1: "Systems Analysis and Development",
+    f_label2: "Technical Education", f_title2: "Mechatronics Technician", f_concluded: "Completed in 2025",
+    exp_title: "Professional Experience",
     alstom_desc: "Production Assistant on large-scale projects: Sao Paulo and Santiago Metro.",
     usiminas_desc: "IT Apprentice responsible for hardware maintenance and technical support.",
     exp_date1: "July 2025 - March 2026", exp_date2: "2024 - June 2025"
@@ -356,15 +253,16 @@ const translations = {
 function setLang(lang) {
   const t = translations[lang];
   if(!t) return;
+
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (t[key]) el.textContent = t[key];
   });
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.getAttribute('onclick').includes(lang));
-  });
+
+  // Atualiza estado visual dos botões
+  document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
 }
 </script>
-
 </body>
 </html>
