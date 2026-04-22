@@ -83,8 +83,24 @@ nav {
   box-shadow: 0 0 20px rgba(124, 58, 237, 0.25); 
 }
 
-.lang-toggle { display: flex; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-.lang-btn { padding: 5px 12px; background: transparent; border: none; color: var(--muted); font-size: 0.72rem; cursor: pointer; transition: 0.2s; }
+/* LANG TOGGLE AJUSTADO */
+.lang-toggle { 
+  display: flex; 
+  background: var(--bg3); 
+  border: 1px solid var(--border); 
+  border-radius: 8px; 
+  overflow: hidden;
+}
+.lang-btn { 
+  padding: 5px 10px; 
+  background: transparent; 
+  border: none; 
+  color: var(--muted); 
+  font-size: 0.7rem; 
+  cursor: pointer; 
+  transition: 0.2s; 
+  font-weight: 600;
+}
 .lang-btn.active { background: var(--purple); color: #fff; }
 
 /* SECTIONS */
@@ -119,9 +135,12 @@ h1.hero-title em { font-style: normal; color: var(--purple-light); }
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
 .tag { display: inline-block; padding: 4px 10px; background: var(--purple-subtle); border: 1px solid var(--border2); color: var(--purple-light); border-radius: 6px; font-size: 0.75rem; margin: 2px; }
 
+@media (max-width: 850px) {
+  .nav-links { display: none; }
+}
+
 @media (max-width: 700px) {
   .formation-row, .projects-grid { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
 }
 </style>
 </head>
@@ -139,6 +158,10 @@ h1.hero-title em { font-style: normal; color: var(--purple-light); }
   <div class="lang-toggle">
     <button class="lang-btn active" onclick="setLang('pt')">PT</button>
     <button class="lang-btn" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" onclick="setLang('de')">DE</button>
+    <button class="lang-btn" onclick="setLang('ja')">JA</button>
+    <button class="lang-btn" onclick="setLang('zh')">ZH</button>
   </div>
 </nav>
 
@@ -174,7 +197,7 @@ h1.hero-title em { font-style: normal; color: var(--purple-light); }
       <h3 data-i18n="proj1_title">Automação Industrial com CLP Siemens</h3>
       <p data-i18n="proj1_desc">Foco em CLP Siemens e automação industrial.</p>
       <a href="https://www.linkedin.com/posts/jos%C3%A9-pimentel-de-oliveira-643b5a3aa_automaaexaetoindustrial-clp-siemens-ugcPost-7450308954196230145-Mn7T" target="_blank" class="project-link">
-        Ver no LinkedIn 
+        <span data-i18n="view_linkedin">Ver no LinkedIn</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       </a>
     </div>
@@ -183,7 +206,7 @@ h1.hero-title em { font-style: normal; color: var(--purple-light); }
       <h3 data-i18n="proj2_title">Sistemas Integrados de Mecatrônica</h3>
       <p data-i18n="proj2_desc">Desenvolvimento técnico industrial realizado no SENAI.</p>
       <a href="https://www.linkedin.com/posts/jos%C3%A9-pimentel-de-oliveira-643b5a3aa_mecatraeknica-senai-indaeqstria-ugcPost-7450343383799267328-gZI5" target="_blank" class="project-link">
-        Ver no LinkedIn
+        <span data-i18n="view_linkedin">Ver no LinkedIn</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       </a>
     </div>
@@ -209,14 +232,14 @@ h1.hero-title em { font-style: normal; color: var(--purple-light); }
   <div class="exp-card" style="margin-bottom:1rem;">
     <div style="display:flex; justify-content:space-between;">
       <strong>Alstom</strong>
-      <span style="font-size:0.8rem; color:var(--purple-light);">Julho de 2025 - Março de 2026</span>
+      <span style="font-size:0.8rem; color:var(--purple-light);" data-i18n="exp_date1">Julho de 2025 - Março de 2026</span>
     </div>
     <p style="font-size:0.9rem; margin-top:0.5rem;" data-i18n="alstom_desc">Ajudante de Produção em projetos de grande escala: Metrô de SP e Santiago.</p>
   </div>
   <div class="exp-card">
     <div style="display:flex; justify-content:space-between;">
       <strong>Soluções Usiminas</strong>
-      <span style="font-size:0.8rem; color:var(--purple-light);">2024 - Junho de 2025</span>
+      <span style="font-size:0.8rem; color:var(--purple-light);" data-i18n="exp_date2">2024 - Junho de 2025</span>
     </div>
     <p style="font-size:0.9rem; margin-top:0.5rem;" data-i18n="usiminas_desc">Aprendiz de TI responsável pela manutenção de hardware e suporte técnico.</p>
   </div>
@@ -247,10 +270,9 @@ const translations = {
     exp_title: "Experiência Profissional", contact_title: "Contato",
     alstom_desc: "Ajudante de Produção em projetos de grande escala: Metrô de SP e Santiago.",
     usiminas_desc: "Aprendiz de TI responsável pela manutenção de hardware e suporte técnico.",
-    proj1_title: "Automação Industrial com CLP Siemens",
-    proj1_desc: "Foco em CLP Siemens e automação industrial.",
-    proj2_title: "Sistemas Integrados de Mecatrônica",
-    proj2_desc: "Desenvolvimento técnico industrial realizado no SENAI."
+    proj1_title: "Automação Industrial com CLP Siemens", proj1_desc: "Foco em CLP Siemens e automação industrial.",
+    proj2_title: "Sistemas Integrados de Mecatrônica", proj2_desc: "Desenvolvimento técnico industrial realizado no SENAI.",
+    view_linkedin: "Ver no LinkedIn", exp_date1: "Julho de 2025 - Março de 2026", exp_date2: "2024 - Junho de 2025"
   },
   en: {
     nav_profile: "Profile", nav_projects: "Projects", nav_skills: "Skills", nav_exp: "Experience", nav_contact: "Contact",
@@ -261,10 +283,61 @@ const translations = {
     exp_title: "Work Experience", contact_title: "Contact",
     alstom_desc: "Production Assistant on large-scale projects: Sao Paulo and Santiago Metro.",
     usiminas_desc: "IT Apprentice responsible for hardware maintenance and technical support.",
-    proj1_title: "Industrial Automation with Siemens PLC",
-    proj1_desc: "Focus on Siemens PLC and industrial automation.",
-    proj2_title: "Integrated Mechatronics Systems",
-    proj2_desc: "Industrial technical development carried out at SENAI."
+    proj1_title: "Industrial Automation with Siemens PLC", proj1_desc: "Focus on Siemens PLC and industrial automation.",
+    proj2_title: "Integrated Mechatronics Systems", proj2_desc: "Industrial technical development carried out at SENAI.",
+    view_linkedin: "View on LinkedIn", exp_date1: "July 2025 - March 2026", exp_date2: "2024 - June 2025"
+  },
+  fr: {
+    nav_profile: "Profil", nav_projects: "Projets", nav_skills: "Compétences", nav_exp: "Expérience", nav_contact: "Contact",
+    about: "Professionnel avec une solide base technique en mécatronique et une expérience pratique du support informatique et de la production industrielle. Étudiant en Analyse et Développement de Systèmes, axé sur Python, SQL et l'IA.",
+    f_label1: "Enseignement Supérieur", f_title1: "Analyse et Développement de Systèmes",
+    f_label2: "Formation Technique", f_title2: "Technicien en Mécatronique", f_concluded: "Terminé en 2025",
+    dl_cv: "Télécharger le CV", skills_title: "Compétences & Technologies", sk_it: "Support Informatique",
+    exp_title: "Expérience Professionnelle", contact_title: "Contact",
+    alstom_desc: "Assistant de production sur des projets d'envergure : Métros de São Paulo et de Santiago.",
+    usiminas_desc: "Apprenti informatique chargé de la maintenance du matériel et de l'assistance technique.",
+    proj1_title: "Automatisation avec API Siemens", proj1_desc: "Focus sur les automates Siemens et l'automatisation industrielle.",
+    proj2_title: "Systèmes Mécatroniques Intégrés", proj2_desc: "Développement technique industriel réalisé au SENAI.",
+    view_linkedin: "Voir sur LinkedIn", exp_date1: "Juillet 2025 - Mars 2026", exp_date2: "2024 - Juin 2025"
+  },
+  de: {
+    nav_profile: "Profil", nav_projects: "Projekte", nav_skills: "Skills", nav_exp: "Erfahrung", nav_contact: "Kontakt",
+    about: "Fachkraft mit fundiertem technischem Hintergrund in Mechatronik sowie praktischer Erfahrung im IT-Support und in der industriellen Produktion. Studium der Systemanalyse, Fokus auf Python, SQL und KI.",
+    f_label1: "Hochschulbildung", f_title1: "Systemanalyse und -entwicklung",
+    f_label2: "Technische Ausbildung", f_title2: "Mechatronik-Techniker", f_concluded: "Abgeschlossen 2025",
+    dl_cv: "Lebenslauf laden", skills_title: "Skills & Technologien", sk_it: "IT-Support",
+    exp_title: "Berufserfahrung", contact_title: "Kontakt",
+    alstom_desc: "Produktionsassistent bei Großprojekten: Metro São Paulo und Santiago.",
+    usiminas_desc: "IT-Auszubildender, zuständig für Hardware-Wartung und technischen Support.",
+    proj1_title: "Automatisierung mit Siemens SPS", proj1_desc: "Schwerpunkt auf Siemens SPS und Industrieautomatisierung.",
+    proj2_title: "Integrierte Mechatronik-Systeme", proj2_desc: "Industrielle technische Entwicklung am SENAI durchgeführt.",
+    view_linkedin: "Auf LinkedIn ansehen", exp_date1: "Juli 2025 - März 2026", exp_date2: "2024 - Juni 2025"
+  },
+  ja: {
+    nav_profile: "プロフィール", nav_projects: "プロジェクト", nav_skills: "スキル", nav_exp: "経歴", nav_contact: "連絡先",
+    about: "メカトロニクスの技術的背景を持ち、ITサポートと工業生産の実務経験があります。現在、システム分析と開発を専攻しており、Python、SQL、AIに注力しています。",
+    f_label1: "高等教育", f_title1: "システム分析と開発",
+    f_label2: "技術トレーニング", f_title2: "メカトロニクス技術者", f_concluded: "2025年修了",
+    dl_cv: "履歴書をダウンロード", skills_title: "スキルとテクノロジー", sk_it: "ITサポート",
+    exp_title: "職務経歴", contact_title: "連絡先",
+    alstom_desc: "大規模プロジェクトの生産アシスタント：サンパウロおよびサンティアゴの地下鉄。",
+    usiminas_desc: "IT見習いとしてハードウェアのメンテナンスとテクニカルサポートを担当。",
+    proj1_title: "シーメンスPLCによる産業自動化", proj1_desc: "シーメンスPLCと産業自動化に焦点。",
+    proj2_title: "メカトロニクス統合システム", proj2_desc: "SENAIで実施された産業技術開発。",
+    view_linkedin: "LinkedInで見る", exp_date1: "2025年7月 - 2026年3月", exp_date2: "2024年 - 2025年6月"
+  },
+  zh: {
+    nav_profile: "个人简介", nav_projects: "项目", nav_skills: "技能", nav_exp: "工作经历", nav_contact: "联系方式",
+    about: "拥有机电一体化专业背景，具备IT支持和工业生产的实践经验。目前就读于系统分析与开发专业，专注于Python、SQL和人工智能的学习。",
+    f_label1: "高等教育", f_title1: "系统分析与开发",
+    f_label2: "技术培训", f_title2: "机电一体化技术员", f_concluded: "2025年毕业",
+    dl_cv: "下载简历", skills_title: "技能与技术", sk_it: "IT支持",
+    exp_title: "职业经历", contact_title: "联系方式",
+    alstom_desc: "在大规模项目中担任生产助手：圣保罗和圣地亚哥地铁。",
+    usiminas_desc: "IT实习生，负责硬件维护和技术支持。",
+    proj1_title: "西门子PLC工业自动化", proj1_desc: "专注于西门子PLC和工业自动化。",
+    proj2_title: "机电一体化集成系统", proj2_desc: "在SENAI完成的工业技术开发。",
+    view_linkedin: "在LinkedIn上查看", exp_date1: "2025年7月 - 2026年3月", exp_date2: "2024年 - 2025年6月"
   }
 };
 
