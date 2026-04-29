@@ -16,10 +16,10 @@
   --purple: #7c3aed;
   --purple-light: #a78bfa;
   --cyan: #06b6d4;
+  --green-neon: #4ade80;
   --purple-glow: rgba(124, 58, 237, 0.35);
   --bg: #07070a;
   --bg2: rgba(17, 17, 24, 0.8);
-  --bg3: rgba(24, 24, 31, 0.9);
   --text: #ede9f8;
   --muted: #8a8599;
   --muted2: #c4bede;
@@ -38,6 +38,7 @@ body {
   line-height: 1.6;
 }
 
+/* Background Glow Effect */
 body::before {
   content: "";
   position: fixed;
@@ -54,22 +55,19 @@ body::before {
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--purple); border-radius: 10px; }
 
+/* Navigation */
 nav {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  padding: 0 1.5rem;
-  height: auto;
-  min-height: 80px;
+  padding: 1rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: rgba(7, 7, 10, 0.8);
   backdrop-filter: blur(15px);
   border-bottom: 1px solid var(--border);
-  flex-wrap: wrap;
-  padding: 1rem;
 }
 
 .nav-logo { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; }
@@ -88,40 +86,20 @@ nav {
 }
 .nav-links a:hover { color: var(--text); }
 
-.lang-toggle { 
-    display: flex; 
-    gap: 4px; 
-    background: rgba(255,255,255,0.05); 
-    border-radius: 30px; 
-    padding: 4px; 
-    border: 1px solid var(--border);
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.lang-btn { 
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 8px; 
-  background: transparent; 
-  border: none; 
-  color: var(--muted); 
-  font-size: 0.6rem; 
-  cursor: pointer; 
-  border-radius: 20px; 
-  transition: 0.3s; 
-  font-weight: 800; 
-}
-.lang-btn img { width: 12px; height: 12px; border-radius: 50%; object-fit: cover; }
+.lang-toggle { display: flex; gap: 4px; background: rgba(255,255,255,0.05); border-radius: 30px; padding: 4px; border: 1px solid var(--border); }
+.lang-btn { display: flex; align-items: center; gap: 4px; padding: 4px 8px; background: transparent; border: none; color: var(--muted); font-size: 0.6rem; cursor: pointer; border-radius: 20px; transition: 0.3s; font-weight: 800; }
 .lang-btn.active { background: var(--purple); color: #fff; }
 
+/* Sections */
 section { padding: 8rem 2rem; max-width: 1100px; margin: 0 auto; }
 
-#perfil { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
 h1.hero-title { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 800; line-height: 0.9; margin-bottom: 2.5rem; letter-spacing: -3px; }
 h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--purple-light), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
 .about-block { font-size: 1.1rem; color: #b4acc7; max-width: 750px; margin-bottom: 4rem; border-left: 3px solid var(--purple); padding-left: 20px; }
+
+/* Cards & Layout */
+.formation-row, .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
 
 .formation-card, .project-card, .skill-card, .exp-card { 
   background: var(--bg2); 
@@ -129,46 +107,68 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
   backdrop-filter: blur(10px); 
   border-radius: 24px; 
   transition: all 0.4s;
+  padding: 2rem;
 }
 
-.formation-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-.formation-card { padding: 2rem; }
-
-.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-.project-card { overflow: hidden; display: flex; flex-direction: column; }
-.project-img { width: 100%; height: 200px; object-fit: cover; opacity: 0.7; transition: 0.4s; }
-.project-card:hover .project-img { opacity: 1; transform: scale(1.05); }
+.project-card { padding: 0; overflow: hidden; position: relative; display: flex; flex-direction: column; }
 .project-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+
+/* Improved Slider/Gallery */
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    background: #000;
+}
+
+.slider-container img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.slider-container img.active { opacity: 0.8; }
+.project-card:hover .slider-container img.active { opacity: 1; transform: scale(1.05); }
+
+/* Tech Tags - Based on Image Design */
+.tag { 
+    display: inline-block; 
+    padding: 4px 10px; 
+    background: rgba(255,255,255,0.05); 
+    border: 1px solid rgba(255,255,255,0.1); 
+    color: var(--muted2); 
+    border-radius: 4px; 
+    font-size: 0.65rem; 
+    margin: 4px 2px; 
+    font-weight: 700;
+    text-transform: uppercase;
+}
 
 .status-badge { 
   font-size: 0.6rem; 
   font-weight: 800; 
   text-transform: uppercase; 
-  padding: 4px 8px; 
+  padding: 4px 12px; 
   border-radius: 20px; 
   border: 1px solid currentColor; 
-  display: inline-block; 
-  margin-bottom: 1rem; 
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 1rem;
 }
 
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-.skill-card { padding: 2rem; }
-.tag { display: inline-block; padding: 6px 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); color: var(--muted); border-radius: 10px; font-size: 0.75rem; margin: 4px; text-decoration: none; }
-.tag.featured { border-color: var(--cyan); color: var(--cyan); }
-
-.exp-card { padding: 2rem; margin-bottom: 2rem; }
-
-.social-btn { display: inline-flex; align-items: center; gap: 10px; padding: 1rem 2rem; background: var(--bg2); border: 1px solid var(--border); color: #fff; border-radius: 100px; text-decoration: none; font-weight: 800; font-size: 0.8rem; transition: 0.4s; }
-.social-btn:hover { border-color: var(--cyan); transform: translateY(-3px); }
-
-.cv-btn { display: inline-block; background: var(--purple); color: #fff; padding: 1rem 2.5rem; border-radius: 100px; text-decoration: none; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; transition: 0.4s; }
+/* Footer & Buttons */
+.cv-btn { display: inline-block; background: var(--purple); color: #fff; padding: 1rem 2.5rem; border-radius: 100px; text-decoration: none; font-weight: 800; text-transform: uppercase; font-size: 0.75rem; transition: 0.4s; }
 .cv-btn:hover { background: var(--purple-light); transform: translateY(-3px); }
 
-@media (max-width: 1000px) {
-    nav { flex-direction: column; padding: 1rem; gap: 1rem; }
-}
+.social-btn { display: inline-flex; align-items: center; gap: 10px; padding: 0.8rem 1.5rem; background: var(--bg2); border: 1px solid var(--border); color: #fff; border-radius: 100px; text-decoration: none; font-weight: 800; font-size: 0.7rem; transition: 0.4s; }
+.social-btn:hover { border-color: var(--cyan); }
 
-@media (max-width: 600px) {
+@media (max-width: 850px) {
     .formation-row, .projects-grid { grid-template-columns: 1fr; }
 }
 </style>
@@ -184,12 +184,8 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
     <li><a href="#experiencia" data-i18n="nav_exp">Experiência</a></li>
   </ul>
   <div class="lang-toggle">
-    <button class="lang-btn active" onclick="setLang('pt')"><img src="https://flagcdn.com/w40/br.png"> PT</button>
-    <button class="lang-btn" onclick="setLang('en')"><img src="https://flagcdn.com/w40/us.png"> EN</button>
-    <button class="lang-btn" onclick="setLang('fr')"><img src="https://flagcdn.com/w40/fr.png"> FR</button>
-    <button class="lang-btn" onclick="setLang('de')"><img src="https://flagcdn.com/w40/de.png"> DE</button>
-    <button class="lang-btn" onclick="setLang('jp')"><img src="https://flagcdn.com/w40/jp.png"> JP</button>
-    <button class="lang-btn" onclick="setLang('zh')"><img src="https://flagcdn.com/w40/cn.png"> ZH</button>
+    <button class="lang-btn active" onclick="setLang('pt')">PT</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
   </div>
 </nav>
 
@@ -221,45 +217,56 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
   <h2 style="margin-bottom: 3rem; font-size: 2.5rem;" class="reveal" data-i18n="nav_projects">Projetos</h2>
   <div class="projects-grid">
     
-    <div class="project-card reveal">
-      <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" class="project-img">
+    <div class="project-card reveal" style="border-color: var(--purple-light);">
+      <div class="slider-container">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" class="active">
+      </div>
       <div class="project-content">
-        <div class="status-badge" style="color: var(--cyan);" data-i18n="status_dev">Em Desenvolvimento</div>
+        <div class="status-badge" style="color: var(--cyan); border-color: var(--cyan);">● Em Desenvolvimento</div>
         <h3 data-i18n="proj3_title">CoByte - Plataforma Colaborativa</h3>
-        <p style="font-size: 0.85rem; color: var(--muted); margin: 1rem 0;" data-i18n="proj3_desc">Aplicação web voltada à automação e padronização do levantamento de requisitos de software.</p>
-        <div style="margin-top: auto;">
-          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag featured">Python</span><span class="tag featured">Flask</span><span class="tag">MySQL</span>
+        <p style="font-size: 0.85rem; color: var(--muted); margin: 1rem 0;" data-i18n="proj3_desc">Automação e padronização do levantamento de requisitos de software.</p>
+        <div>
+          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">MySQL</span>
         </div>
       </div>
     </div>
 
-    <div class="project-card reveal">
-      <img src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?auto=format&fit=crop&w=800&q=80" class="project-img">
+    <div class="project-card reveal" style="border-color: var(--green-neon);">
+      <div class="slider-container" id="catequese-slider">
+          <img src="catequese1.png" class="active">
+          <img src="catequese2.png">
+          <img src="catequese3.png">
+          <img src="catequese4.png">
+      </div>
       <div class="project-content">
-        <div class="status-badge" style="color: #4ade80;" data-i18n="status_done">Concluído</div>
+        <div class="status-badge" style="color: var(--green-neon); border-color: var(--green-neon);">● Concluído</div>
         <h3 data-i18n="proj4_title">Sistema de Gestão de Catequese</h3>
-        <p style="font-size: 0.85rem; color: var(--muted); margin: 1rem 0;" data-i18n="proj4_desc">Aplicação web para organização de turmas, permitindo o cadastro e gerenciamento de alunos.</p>
-        <div style="margin-top: auto;">
-          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag featured">Python</span><span class="tag featured">Flask</span><span class="tag">MySQL</span>
+        <p style="font-size: 0.85rem; color: var(--muted); margin: 1rem 0;" data-i18n="proj4_desc">Organização de turmas e gerenciamento de alunos.</p>
+        <div>
+          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">MySQL</span>
         </div>
       </div>
     </div>
 
     <div class="project-card reveal">
-      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" class="project-img">
+      <div class="slider-container">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" class="active">
+      </div>
       <div class="project-content">
         <h3 data-i18n="proj1_title">Automação Industrial</h3>
-        <p style="font-size: 0.85rem; color: var(--muted); margin: 1rem 0;" data-i18n="proj1_desc">Programação de CLP Siemens para linhas de produção automatizadas.</p>
-        <a href="https://www.linkedin.com/posts/jos%C3%A9-pimentel-de-oliveira-643b5a3aa_automaaexaetoindustrial-clp-siemens-ugcPost-7450308954196230145-Mn7T" target="_blank" class="tag featured">LINKEDIN</a>
+        <p style="font-size: 0.85rem; color: var(--muted); margin: 1rem 0;" data-i18n="proj1_desc">Programação de CLP Siemens para linhas automatizadas.</p>
+        <a href="https://www.linkedin.com/in/jos%C3%A9-pimentel-de-oliveira-643b5a3aa" target="_blank" class="tag" style="border-color: var(--cyan); color: var(--cyan);">LINKEDIN</a>
       </div>
     </div>
 
     <div class="project-card reveal">
-      <img src="https://www.sick.com/media/content/h3d/h40/13968639524894.jpg" class="project-img">
+      <div class="slider-container">
+          <img src="https://www.sick.com/media/content/h3d/h40/13968639524894.jpg" class="active">
+      </div>
       <div class="project-content">
         <h3 data-i18n="proj2_title">Programação Robótica Industrial</h3>
-        <p style="font-size: 0.85rem; color: var(--muted); margin: 1rem 0;" data-i18n="proj2_desc">Programação e simulação de robôs industriais utilizando Roboguide (FANUC).</p>
-        <a href="https://www.linkedin.com/posts/jos%C3%A9-pimentel-de-oliveira-643b5a3aa_mecatraeknica-senai-indaeqstria-ugcPost-7450343383799267328-gZI5" target="_blank" class="tag featured">LINKEDIN</a>
+        <p style="font-size: 0.85rem; color: var(--muted); margin: 1rem 0;" data-i18n="proj2_desc">Simulação de robôs industriais utilizando Roboguide (FANUC).</p>
+        <a href="https://www.linkedin.com/in/jos%C3%A9-pimentel-de-oliveira-643b5a3aa" target="_blank" class="tag" style="border-color: var(--cyan); color: var(--cyan);">LINKEDIN</a>
       </div>
     </div>
   </div>
@@ -267,43 +274,25 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
 
 <section id="skills">
   <h2 style="margin-bottom: 3rem; font-size: 2.5rem;" class="reveal" data-i18n="skills_title">Skills & Tecnologias</h2>
-  <div class="skills-grid">
+  <div class="formation-row">
     <div class="skill-card reveal">
       <strong style="color: var(--cyan); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px;">Software & Dev</strong>
       <div style="margin-top:1rem;">
-        <span class="tag featured">Python</span><span class="tag featured">SQL</span><span class="tag">AI</span><span class="tag">HTML/CSS/JS</span>
+        <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">HTML/CSS/JS</span><span class="tag">Flask</span>
       </div>
     </div>
     <div class="skill-card reveal">
       <strong style="color: var(--purple-light); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px;">Hardware & Industry</strong>
       <div style="margin-top:1rem;">
-        <span class="tag">Hardware</span><span class="tag featured">Support</span><span class="tag">PLC</span><span class="tag">Mechatronics</span>
+        <span class="tag">PLC Siemens</span><span class="tag">Roboguide</span><span class="tag">Pneumática</span><span class="tag">Manutenção</span>
       </div>
     </div>
   </div>
 </section>
 
-<section id="experiencia">
-  <h2 style="margin-bottom: 3rem; font-size: 2.5rem;" class="reveal" data-i18n="exp_title">Experiência</h2>
-  <div class="exp-card reveal">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap: wrap;">
-      <strong>Alstom</strong>
-      <span style="font-size:0.75rem; color:var(--cyan); font-weight:800;" data-i18n="exp_date1">Jul 2025 - Mar 2026</span>
-    </div>
-    <p style="color: var(--muted2); font-size: 1rem;" data-i18n="alstom_desc">Projetos de grande escala: Metrô de SP e Santiago.</p>
-  </div>
-  <div class="exp-card reveal">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap: wrap;">
-      <strong>Soluções Usiminas</strong>
-      <span style="font-size:0.75rem; color:var(--cyan); font-weight:800;" data-i18n="exp_date2">2024 - Jun 2025</span>
-    </div>
-    <p style="color: var(--muted2); font-size: 1rem;" data-i18n="usiminas_desc">Manutenção de hardware e suporte técnico de TI.</p>
-  </div>
-</section>
-
 <section id="contato" style="text-align:center">
   <h2 style="margin-bottom: 2rem; font-size: 3rem;" class="reveal" data-i18n="contact_title">Vamos conversar?</h2>
-  <div class="social-row reveal">
+  <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;" class="reveal">
     <a class="social-btn" href="https://www.linkedin.com/in/jos%C3%A9-pimentel-de-oliveira-643b5a3aa" target="_blank">LinkedIn</a>
     <a class="social-btn" href="mailto:jose1pimentel0@gmail.com">E-mail</a>
     <a class="social-btn" href="https://www.instagram.com/ze.06z?igsh=MTd4aGUzZWNsYWQz" target="_blank">Instagram</a>
@@ -313,6 +302,23 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
 <script>
 ScrollReveal().reveal('.reveal', { distance: '40px', duration: 1000, interval: 100, origin: 'bottom' });
 
+// Lógica do Slider Automático
+function initSliders() {
+    const slider = document.querySelector('#catequese-slider');
+    const images = slider.querySelectorAll('img');
+    let currentIndex = 0;
+
+    if (images.length <= 1) return;
+
+    setInterval(() => {
+        images[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.add('active');
+    }, 3000); // Troca a cada 3 segundos
+}
+
+window.addEventListener('load', initSliders);
+
 const translations = {
   pt: {
     nav_profile: "Perfil", nav_projects: "Projetos", nav_skills: "Skills", nav_exp: "Experiência",
@@ -321,30 +327,25 @@ const translations = {
     f_label2: "FORMAÇÃO TÉCNICA", f_title2: "Técnico em Mecatrônica", f_concluded: "Concluído em 2025",
     dl_cv: "Download CV", 
     proj1_title: "Automação Industrial", proj1_desc: "Programação de CLP Siemens para linhas de produção automatizadas.",
-    proj2_title: "Programação Robótica Industrial", proj2_desc: "Programação e simulação de robôs industriais utilizando Roboguide (FANUC).",
-    proj3_title: "CoByte - Plataforma Colaborativa", proj3_desc: "Aplicação web voltada à automação e padronização do levantamento de requisitos de software.",
-    proj4_title: "Sistema de Gestão de Catequese", proj4_desc: "Aplicação web para organização de turmas, permitindo o cadastro e gerenciamento de alunos.",
+    proj2_title: "Programação Robótica Industrial", proj2_desc: "Simulação de robôs industriais utilizando Roboguide (FANUC).",
+    proj3_title: "CoByte - Plataforma Colaborativa", proj3_desc: "Automação e padronização do levantamento de requisitos.",
+    proj4_title: "Sistema de Gestão de Catequese", proj4_desc: "Organização de turmas e gerenciamento de alunos.",
     status_dev: "Em Desenvolvimento", status_done: "Concluído",
-    skills_title: "Skills & Tecnologias", exp_title: "Experiência", contact_title: "Vamos conversar?",
-    alstom_desc: "Projetos de grande escala: Metrô de SP e Santiago.", usiminas_desc: "Manutenção de hardware e suporte técnico de TI.",
-    exp_date1: "Jul 2025 - Mar 2026", exp_date2: "2024 - Jun 2025"
+    skills_title: "Skills & Tecnologias", exp_title: "Experiência", contact_title: "Vamos conversar?"
   },
   en: {
     nav_profile: "Profile", nav_projects: "Projects", nav_skills: "Skills", nav_exp: "Experience",
-    about: "Professional with a solid background in Mechatronics and practical experience in IT support and production. Currently studying Systems Analysis.",
+    about: "Professional with a solid background in Mechatronics and practical experience in IT support. Currently studying Systems Analysis.",
     f_label1: "HIGHER EDUCATION", f_title1: "Systems Analysis and Development",
     f_label2: "TECHNICAL EDUCATION", f_title2: "Mechatronics Technician", f_concluded: "Completed in 2025",
     dl_cv: "Download CV", 
     proj1_title: "Industrial Automation", proj1_desc: "Siemens PLC programming for automated production lines.",
-    proj2_title: "Industrial Robotic Programming", proj2_desc: "Industrial robot programming and simulation using Roboguide (FANUC).",
-    proj3_title: "CoByte - Collaborative Platform", proj3_desc: "Web application for automating and standardizing software requirements gathering.",
-    proj4_title: "Catechesis Management System", proj4_desc: "Web application for class organization and student management.",
+    proj2_title: "Industrial Robotic Programming", proj2_desc: "Industrial robot simulation using Roboguide (FANUC).",
+    proj3_title: "CoByte - Collaborative Platform", proj3_desc: "Software requirements automation and standardization.",
+    proj4_title: "Catechesis Management System", proj4_desc: "Class organization and student management.",
     status_dev: "In Development", status_done: "Completed",
-    skills_title: "Skills & Tech", exp_title: "Experience", contact_title: "Let's talk?",
-    alstom_desc: "Large-scale projects: SP and Santiago Metro.", usiminas_desc: "Hardware maintenance and IT technical support.",
-    exp_date1: "Jul 2025 - Mar 2026", exp_date2: "2024 - Jun 2025"
+    skills_title: "Skills & Tech", contact_title: "Let's talk?"
   }
-  // As outras línguas (FR, DE, JP, ZH) seguem o mesmo padrão para os novos campos...
 };
 
 function setLang(lang) {
