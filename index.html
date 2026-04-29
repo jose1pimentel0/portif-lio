@@ -140,6 +140,28 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
 .project-card:hover .project-img { opacity: 1; transform: scale(1.05); }
 .project-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
 
+/* Estilos especiais para o card com carrossel */
+.catequese-card .catequese-gallery {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.catequese-card .catequese-gallery .project-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out, transform 0.4s;
+}
+
+.catequese-card .catequese-gallery .project-img.active {
+    opacity: 1;
+}
+
 .status-badge { 
   font-size: 0.6rem; 
   font-weight: 800; 
@@ -233,12 +255,19 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
       </div>
     </div>
 
-    <div class="project-card reveal">
-      <img src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?auto=format&fit=crop&w=800&q=80" class="project-img">
+    <div class="project-card catequese-card reveal">
+      <div class="catequese-gallery">
+          <img src="https://i.imgur.com/u7H4J9u.png" class="project-img active">
+          <img src="https://i.imgur.com/bQ4Zk0M.png" class="project-img">
+          <img src="https://i.imgur.com/pYVjFhU.png" class="project-img">
+          <img src="https://i.imgur.com/5O5vFqD.png" class="project-img">
+          <img src="https://i.imgur.com/vHhR07K.png" class="project-img">
+          <img src="https://i.imgur.com/YgLgL0X.png" class="project-img">
+      </div>
       <div class="project-content">
         <div class="status-badge" style="color: #4ade80;" data-i18n="status_done">Concluído</div>
         <h3 data-i18n="proj4_title">Sistema de Gestão de Catequese</h3>
-        <p style="font-size: 0.85rem; color: var(--muted); margin: 1rem 0;" data-i18n="proj4_desc">Aplicação web para organização de turmas da catequese, permitindo o cadastro e gerenciamento de alunos.</p>
+        <p style="font-size: 0.85rem; color: var(--muted); margin: 1rem 0;" data-i18n="proj4_desc">Aplicação web para organização de turmas, permitindo o cadastro e gerenciamento de alunos.</p>
         <div style="margin-top: auto;">
           <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag featured">Python</span><span class="tag featured">Flask</span><span class="tag">MySQL</span>
         </div>
@@ -313,6 +342,28 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
 <script>
 ScrollReveal().reveal('.reveal', { distance: '40px', duration: 1000, interval: 100, origin: 'bottom' });
 
+/* Script para o Carrossel do Card da Catequese */
+function startCatequeseGallery() {
+    const images = document.querySelectorAll('.catequese-card .project-img');
+    let currentIndex = 0;
+
+    if (images.length <= 1) return; // Nada para fazer se tiver só 1 imagem
+
+    setInterval(() => {
+        // Remove a classe ativa da imagem atual
+        images[currentIndex].classList.remove('active');
+
+        // Calcula o próximo índice (volta para 0 no final)
+        currentIndex = (currentIndex + 1) % images.length;
+
+        // Adiciona a classe ativa na nova imagem
+        images[currentIndex].classList.add('active');
+    }, 4000); // Troca de imagem a cada 4 segundos
+}
+
+// Inicia o carrossel quando a página carrega
+window.addEventListener('load', startCatequeseGallery);
+
 const translations = {
   pt: {
     nav_profile: "Perfil", nav_projects: "Projetos", nav_skills: "Skills", nav_exp: "Experiência",
@@ -344,7 +395,6 @@ const translations = {
     alstom_desc: "Large-scale projects: SP and Santiago Metro.", usiminas_desc: "Hardware maintenance and IT technical support.",
     exp_date1: "Jul 2025 - Mar 2026", exp_date2: "2024 - Jun 2025"
   }
-  // As outras línguas (FR, DE, JP, ZH) seguem o mesmo padrão para os novos campos...
 };
 
 function setLang(lang) {
