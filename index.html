@@ -225,6 +225,214 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
       </div>
     </div>
   </div>
+  <div class="project-card reveal catequese-card" onclick="toggleExpand(this)">
+  <div class="card-inner">
+    <div class="card-header">
+      <span class="extension-label">02 / EXTENSION</span>
+      <span class="status-badge">CONCLUÍDO</span>
+    </div>
+
+    <div class="project-content">
+      <h3 class="card-title">Sistema Web para Gestão de <br>Catequese Comunitária</h3>
+      <p class="card-description">
+        Aplicação web voltada à organização de turmas de catequese, permitindo o cadastro e gerenciamento de alunos.
+      </p>
+
+      <div class="tags-container">
+        <span class="tech-tag">HTML</span>
+        <span class="tech-tag">CSS</span>
+        <span class="tech-tag">JavaScript</span>
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Flask</span>
+        <span class="tech-tag">MySQL</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="card-footer">
+        <span class="highlight-text">Gestão <span class="number">360º</span></span>
+        <span class="bullet">•</span>
+        <span>Drive API</span>
+        <span class="bullet">•</span>
+        <span>Real-time</span>
+      </div>
+    </div>
+
+    <div class="expandable-gallery">
+      <div class="gallery-grid">
+        <div class="img-wrapper">
+          <small>Login</small>
+          <img src="https://drive.google.com/file/d/1R1Y5CH8eQgpCkPoI7YYLsWJwz2H5kgz3/view?usp=sharing" alt="Login Catequese" onerror="this.src='https://placehold.co/600x400/18181f/8a8599?text=Login+Screen'">
+        </div>
+        <div class="img-wrapper">
+          <small>Criar Conta</small>
+          <img src="https://drive.google.com/file/d/1WHGIxMjO7k8c4kQF5LOJGogS46iUF8Er/view?usp=sharing" alt="Criar Conta Catequese" onerror="this.src='https://placehold.co/600x400/18181f/8a8599?text=Register+Screen'">
+        </div>
+        <div class="img-wrapper">
+          <small>Painel Admin</small>
+          <img src="https://drive.google.com/file/d/1jEnyZa0Nm1GgR4enYVbx6zuORmbQCawE/view?usp=sharing" alt="Admin Catequese" onerror="this.src='https://placehold.co/600x400/18181f/8a8599?text=Admin+Panel'">
+        </div>
+        <div class="img-wrapper">
+          <small>Escolha de Curso</small>
+          <img src="https://drive.google.com/file/d/1JUWuRyn-dHqLmDchUAl-324jrWHNranR/view?usp=sharing" alt="Escolha de Curso" onerror="this.src='https://placehold.co/600x400/18181f/8a8599?text=Course+Selection'">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* Estilização Baseada no Screenshot */
+.catequese-card {
+  cursor: pointer;
+  background: rgba(24, 24, 31, 0.95) !important;
+  border: 1px solid rgba(124, 252, 0, 0.1) !important; /* Bordas levemente esverdeadas */
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  max-height: 450px; /* Altura padrão */
+  width: 100%;
+}
+
+.catequese-card.expanded {
+  max-height: 2000px; /* Permite expansão */
+  border-color: #7cfc00 !important;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 2rem 0;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.extension-label {
+  color: #7cfc00;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+}
+
+.status-badge {
+  border: 1px solid #4a5d3e;
+  color: #7cfc00;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.card-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 1.5rem 0 1rem;
+  line-height: 1.2;
+}
+
+.card-description {
+  color: #8a8599;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.tech-tag {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: #c4bede;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(255,255,255,0.05);
+  margin: 1.5rem 0;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #7a7a7a;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.highlight-text { color: #8a8599; }
+.highlight-text .number { color: #7cfc00; }
+.bullet { color: #333; font-size: 1.2rem; }
+
+/* Galeria Expansível */
+.expandable-gallery {
+  opacity: 0;
+  padding: 0 2rem 2rem;
+  transition: opacity 0.4s ease;
+  display: none;
+}
+
+.expanded .expandable-gallery {
+  display: block;
+  opacity: 1;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.img-wrapper {
+  background: #111;
+  border-radius: 8px;
+  padding: 10px;
+  border: 1px solid #222;
+}
+
+.img-wrapper small {
+  display: block;
+  color: #7cfc00;
+  margin-bottom: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.6rem;
+}
+
+.img-wrapper img {
+  width: 100%;
+  border-radius: 4px;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.img-wrapper img:hover {
+  transform: scale(1.02);
+}
+</style>
+
+<script>
+function toggleExpand(card) {
+  card.classList.toggle('expanded');
+  
+  // Rolar suavemente para o card ao expandir
+  if(card.classList.contains('expanded')) {
+    setTimeout(() => {
+      card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 300);
+  }
+}
+</script>
 </section>
 
 <section id="skills">
