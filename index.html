@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>José Pimentel — Dev ADS & Mecatrônica</title>
+<title>José Pimentel — Portfólio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
@@ -82,10 +82,6 @@ nav {
 }
 .nav-links a:hover { color: var(--text); }
 
-.lang-toggle { display: flex; gap: 4px; background: rgba(255,255,255,0.05); border-radius: 30px; padding: 4px; border: 1px solid var(--border); }
-.lang-btn { background: transparent; border: none; color: var(--muted); font-size: 0.6rem; cursor: pointer; padding: 4px 8px; border-radius: 20px; font-weight: 800; }
-.lang-btn.active { background: var(--purple); color: #fff; }
-
 /* Seções */
 section { padding: 8rem 2rem; max-width: 1100px; margin: 0 auto; }
 
@@ -94,90 +90,46 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
 
 .about-block { font-size: 1.1rem; color: #b4acc7; max-width: 750px; margin-bottom: 4rem; border-left: 3px solid var(--purple); padding-left: 20px; }
 
-/* Grid e Cards */
-.formation-row, .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+/* Experiências Profissionais */
+.experience-container { display: flex; flex-direction: column; gap: 2rem; margin-top: 3rem; }
+.exp-card { padding: 2rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 24px; transition: 0.4s; }
+.exp-card:hover { border-color: var(--purple); }
+.exp-card h3 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.5rem; }
+.exp-card .company { color: var(--cyan); font-weight: 700; margin-bottom: 1rem; display: block; }
+.exp-card .period { font-size: 0.8rem; color: var(--muted); display: block; margin-bottom: 1rem; }
+.exp-card ul { list-style: none; padding-left: 0; }
+.exp-card li { margin-bottom: 0.5rem; color: var(--muted2); font-size: 0.9rem; position: relative; padding-left: 1.5rem; }
+.exp-card li::before { content: "→"; position: absolute; left: 0; color: var(--purple); }
 
-.formation-card, .project-card, .skill-card, .exp-card { 
-  background: var(--bg2); 
-  border: 1px solid var(--border); 
-  backdrop-filter: blur(10px); 
-  border-radius: 24px; 
-  transition: 0.4s;
+/* Grid de Projetos */
+.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.project-card { 
+  background: var(--bg2); border: 1px solid var(--border); 
+  border-radius: 24px; overflow: hidden; display: flex; 
+  flex-direction: column; cursor: pointer; transition: 0.4s;
 }
-
-.project-card { overflow: hidden; display: flex; flex-direction: column; cursor: pointer; }
 .project-card:hover { border-color: var(--purple-light); transform: translateY(-5px); }
-
 .project-banner { width: 100%; height: 200px; object-fit: cover; opacity: 0.8; transition: 0.4s; }
 .project-card:hover .project-banner { opacity: 1; }
-
 .project-content { padding: 1.5rem; flex-grow: 1; }
 
-.tag { 
-    display: inline-block; 
-    padding: 4px 10px; 
-    background: rgba(255,255,255,0.05); 
-    border: 1px solid rgba(255,255,255,0.1); 
-    color: var(--muted2); 
-    border-radius: 4px; 
-    font-size: 0.65rem; 
-    margin: 4px 2px; 
-    font-weight: 700;
-}
+.tag { display: inline-block; padding: 4px 10px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--muted2); border-radius: 4px; font-size: 0.65rem; margin: 4px 2px; font-weight: 700; }
+.status-badge { font-size: 0.6rem; font-weight: 800; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; border: 1px solid currentColor; display: inline-flex; align-items: center; gap: 5px; margin-bottom: 1rem; }
 
-.status-badge { 
-  font-size: 0.6rem; font-weight: 800; text-transform: uppercase; 
-  padding: 4px 12px; border-radius: 20px; border: 1px solid currentColor; 
-  display: inline-flex; align-items: center; gap: 5px; margin-bottom: 1rem;
-}
+/* Contato */
+.contact-row { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 3rem; }
+.social-btn { display: inline-flex; align-items: center; gap: 10px; padding: 1rem 1.8rem; background: var(--bg2); border: 1px solid var(--border); color: #fff; border-radius: 100px; text-decoration: none; font-weight: 800; font-size: 0.8rem; transition: 0.4s; }
+.social-btn:hover { border-color: var(--cyan); transform: scale(1.05); }
 
-/* Modal Estilos */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(7, 7, 10, 0.95);
-    backdrop-filter: blur(10px);
-    justify-content: center; align-items: center;
-}
-
-.modal-content {
-    position: relative;
-    width: 90%; max-width: 800px;
-    text-align: center;
-}
-
-.modal-img {
-    width: 100%; max-height: 70vh;
-    object-fit: contain;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-}
-
-.close-modal {
-    position: absolute;
-    top: -40px; right: 0;
-    color: #fff; font-size: 2rem; cursor: pointer;
-}
-
+/* Modal */
+.modal { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(7, 7, 10, 0.95); backdrop-filter: blur(10px); justify-content: center; align-items: center; }
+.modal-content { position: relative; width: 90%; max-width: 800px; text-align: center; }
+.modal-img { width: 100%; max-height: 70vh; object-fit: contain; border-radius: 12px; border: 1px solid var(--border); }
+.close-modal { position: absolute; top: -40px; right: 0; color: #fff; font-size: 2rem; cursor: pointer; }
 .modal-nav { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
-.modal-btn { 
-    background: var(--purple); color: white; border: none; 
-    padding: 8px 20px; border-radius: 50px; cursor: pointer; font-weight: bold; 
-}
+.modal-btn { background: var(--purple); color: white; border: none; padding: 8px 20px; border-radius: 50px; cursor: pointer; font-weight: bold; }
 
-#imgCounter { margin-top: 15px; color: var(--muted); font-size: 0.8rem; }
-
-/* Botões */
-.cv-btn { display: inline-block; background: var(--purple); color: #fff; padding: 1rem 2.5rem; border-radius: 100px; text-decoration: none; font-weight: 800; font-size: 0.75rem; transition: 0.4s; }
-.cv-btn:hover { background: var(--purple-light); transform: translateY(-3px); }
-
-.social-btn { display: inline-flex; align-items: center; gap: 10px; padding: 0.8rem 1.5rem; background: var(--bg2); border: 1px solid var(--border); color: #fff; border-radius: 100px; text-decoration: none; font-weight: 800; font-size: 0.7rem; transition: 0.4s; }
-.social-btn:hover { border-color: var(--cyan); }
-
-@media (max-width: 850px) { .formation-row, .projects-grid { grid-template-columns: 1fr; } }
+@media (max-width: 850px) { .projects-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -185,52 +137,61 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
 <nav>
   <div class="nav-logo"><i>{</i><span>J</span>P<i>}</i></div>
   <ul class="nav-links">
-    <li><a href="#perfil" data-i18n="nav_profile">Perfil</a></li>
-    <li><a href="#projetos" data-i18n="nav_projects">Projetos</a></li>
-    <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
+    <li><a href="#perfil">Perfil</a></li>
+    <li><a href="#experiencia">Experiência</a></li>
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#contato">Contato</a></li>
   </ul>
-  <div class="lang-toggle">
-    <button class="lang-btn active" onclick="setLang('pt')">PT</button>
-    <button class="lang-btn" onclick="setLang('en')">EN</button>
-  </div>
 </nav>
 
 <section id="perfil">
   <div class="reveal">
     <h1 class="hero-title">José <br><em>Pimentel</em></h1>
-    <p class="about-block" data-i18n="about">Profissional com sólida formação técnica em Mecatrônica e experiência prática em suporte de TI e produção industrial. Atualmente cursando Análise e Desenvolvimento de Sistemas.</p>
+    <p class="about-block">Profissional com sólida formação técnica em Mecatrônica e experiência prática em suporte de TI e produção industrial. Atualmente cursando Análise e Desenvolvimento de Sistemas.</p>
     
-    <div class="formation-row">
-      <div class="formation-card" style="padding:2rem;">
-        <small style="color:var(--cyan); font-weight:900;" data-i18n="f_label1">FORMAÇÃO SUPERIOR</small>
-        <h3 style="margin: 0.5rem 0;" data-i18n="f_title1">Análise e Desenvolvimento de Sistemas</h3>
-        <p style="font-size:0.8rem; color:var(--muted);">SENAI · Previsão 2027</p>
-      </div>
-      <div class="formation-card" style="padding:2rem;">
-        <small style="color:var(--purple-light); font-weight:900;" data-i18n="f_label2">FORMAÇÃO TÉCNICA</small>
-        <h3 style="margin: 0.5rem 0;" data-i18n="f_title2">Técnico em Mecatrônica</h3>
-        <p style="font-size:0.8rem; color:var(--muted);" data-i18n="f_concluded">Concluído em 2025</p>
-      </div>
+    <div style="margin-top: 3rem;">
+      <a href="https://drive.google.com/open?id=1SL9lQdC29JfXIG1wj2N_UaAx_SaOO7gDY8kSLKbsDy4" target="_blank" class="social-btn">Download Currículo (Drive)</a>
+    </div>
+  </div>
+</section>
+
+<section id="experiencia">
+  <h2 style="margin-bottom: 2rem; font-size: 2.5rem;" class="reveal">Experiência Profissional</h2>
+  <div class="experience-container">
+    <div class="exp-card reveal">
+      <h3>Ajudante de Produção</h3>
+      <span class="company">Alstom</span>
+      <span class="period">Julho de 2025 – Março de 2026</span>
+      <ul>
+        <li>Atuação em projetos de grande escala: Linha 6 (Metrô de SP) e Linha 7 (Metrô de Santiago).</li>
+        <li>Suporte técnico em montagens estruturais e sistemas mecatrônicos.</li>
+      </ul>
     </div>
 
-    <div style="margin-top: 3rem;">
-      <a href="https://docs.google.com/document/d/1SL9lQdC29JfXIG1wj2N_UaAx_SaOO7gDY8kSLKbsDy4/edit?usp=sharing" target="_blank" class="cv-btn" data-i18n="dl_cv">Download CV</a>
+    <div class="exp-card reveal">
+      <h3>Aprendiz de TI</h3>
+      <span class="company">Soluções Usiminas</span>
+      <span class="period">2024 – Junho de 2025</span>
+      <ul>
+        <li>Manutenção preventiva e corretiva de hardware e suporte técnico a usuários.</li>
+        <li>Gestão de inventário e substituição de equipamentos de informática.</li>
+      </ul>
     </div>
   </div>
 </section>
 
 <section id="projetos">
-  <h2 style="margin-bottom: 3rem; font-size: 2.5rem;" class="reveal" data-i18n="nav_projects">Projetos</h2>
+  <h2 style="margin-bottom: 3rem; font-size: 2.5rem;" class="reveal">Projetos em Destaque</h2>
   <div class="projects-grid">
     
     <div class="project-card reveal" onclick="openModal('cobyte')">
       <img src="integrador1.png" class="project-banner">
       <div class="project-content">
         <div class="status-badge" style="color: var(--cyan); border-color: var(--cyan);">● Ver Galeria</div>
-        <h3 data-i18n="proj3_title">CoByte - Plataforma Colaborativa</h3>
-        <p style="font-size: 0.85rem; color: var(--muted); margin: 1rem 0;" data-i18n="proj3_desc">Levantamento de requisitos de software.</p>
+        <h3>CoByte - Plataforma Colaborativa</h3>
+        <p style="font-size: 0.85rem; color: var(--muted); margin: 1rem 0;">Levantamento de requisitos de software e documentação técnica.</p>
         <div>
-          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">MySQL</span>
+          <span class="tag">HTML</span><span class="tag">Python</span><span class="tag">MySQL</span>
         </div>
       </div>
     </div>
@@ -239,14 +200,24 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
       <img src="catequese1.png" class="project-banner">
       <div class="project-content">
         <div class="status-badge" style="color: var(--green-neon); border-color: var(--green-neon);">● Ver Galeria</div>
-        <h3 data-i18n="proj4_title">Sistema de Gestão de Catequese</h3>
-        <p style="font-size: 0.85rem; color: var(--muted); margin: 1rem 0;" data-i18n="proj4_desc">Aplicação para organização de turmas e alunos.</p>
+        <h3>Gestão de Catequese</h3>
+        <p style="font-size: 0.85rem; color: var(--muted); margin: 1rem 0;">Aplicação para organização de turmas e alunos.</p>
         <div>
-          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">MySQL</span>
+          <span class="tag">Flask</span><span class="tag">JS</span><span class="tag">CSS</span>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
+<section id="contato">
+  <h2 style="margin-bottom: 2rem; font-size: 2.5rem;" class="reveal">Vamos conversar?</h2>
+  <p style="color: var(--muted2);">Sinta-se à vontade para entrar em contato comigo através das redes abaixo:</p>
+  
+  <div class="contact-row reveal">
+    <a href="mailto:jose1pimentel0@gmail.com" class="social-btn">Email: jose1pimentel0@gmail.com</a>
+    <a href="https://linkedin.com/in/josé-pimentel-de-oliveira-643b5a3aa" target="_blank" class="social-btn">LinkedIn</a>
+    <a href="https://instagram.com/ze.06z" target="_blank" class="social-btn">Instagram</a>
   </div>
 </section>
 
@@ -258,22 +229,16 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
             <button class="modal-btn" onclick="prevImg()">Anterior</button>
             <button class="modal-btn" onclick="nextImg()">Próxima</button>
         </div>
-        <p id="imgCounter"></p>
+        <p id="imgCounter" style="margin-top: 15px; color: var(--muted); font-size: 0.8rem;"></p>
     </div>
 </div>
 
 <script>
 ScrollReveal().reveal('.reveal', { distance: '40px', duration: 1000, interval: 100, origin: 'bottom' });
 
-// Modal Logic
 const galleries = {
-    cobyte: [
-        "integrador1.png", "integrador2.png", "integrador3.png", "integrador4.png",
-        "integrador5.png", "integrador6.png", "integrador7.png", "integrador8.png"
-    ],
-    catequese: [
-        "catequese1.png", "catequese2.png", "catequese3.png", "catequese4.png"
-    ]
+    cobyte: ["integrador1.png", "integrador2.png", "integrador3.png", "integrador4.png", "integrador5.png", "integrador6.png", "integrador7.png", "integrador8.png"],
+    catequese: ["catequese1.png", "catequese2.png", "catequese3.png", "catequese4.png"]
 };
 
 let currentGallery = [];
@@ -286,59 +251,17 @@ function openModal(projectKey) {
     updateModal();
 }
 
-function closeModal() {
-    document.getElementById("projectModal").style.display = "none";
-}
+function closeModal() { document.getElementById("projectModal").style.display = "none"; }
 
 function updateModal() {
     document.getElementById("modalImage").src = currentGallery[currentIndex];
     document.getElementById("imgCounter").textContent = `Imagem ${currentIndex + 1} de ${currentGallery.length}`;
 }
 
-function nextImg() {
-    currentIndex = (currentIndex + 1) % currentGallery.length;
-    updateModal();
-}
+function nextImg() { currentIndex = (currentIndex + 1) % currentGallery.length; updateModal(); }
+function prevImg() { currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length; updateModal(); }
 
-function prevImg() {
-    currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
-    updateModal();
-}
-
-window.onclick = function(event) {
-    if (event.target == document.getElementById("projectModal")) closeModal();
-}
-
-// Translations
-const translations = {
-  pt: {
-    nav_profile: "Perfil", nav_projects: "Projetos", nav_skills: "Skills",
-    about: "Profissional com sólida formação técnica em Mecatrônica e experiência prática em suporte de TI e produção industrial. Atualmente cursando Análise e Desenvolvimento de Sistemas.",
-    f_label1: "FORMAÇÃO SUPERIOR", f_title1: "Análise e Desenvolvimento de Sistemas",
-    f_label2: "FORMAÇÃO TÉCNICA", f_title2: "Técnico em Mecatrônica", f_concluded: "Concluído em 2025",
-    dl_cv: "Download CV", proj3_title: "CoByte", proj3_desc: "Levantamento de requisitos de software.", 
-    proj4_title: "Sistema de Catequese", proj4_desc: "Aplicação para organização de turmas e alunos."
-  },
-  en: {
-    nav_profile: "Profile", nav_projects: "Projects", nav_skills: "Skills",
-    about: "Professional with a solid background in Mechatronics and practical experience in IT support. Currently studying Systems Analysis.",
-    f_label1: "HIGHER EDUCATION", f_title1: "Systems Analysis and Development",
-    f_label2: "TECHNICAL EDUCATION", f_title2: "Mechatronics Technician", f_concluded: "Completed in 2025",
-    dl_cv: "Download CV", proj3_title: "CoByte", proj3_desc: "Software requirements gathering.",
-    proj4_title: "Catechesis System", proj4_desc: "Application for organizing classes and students."
-  }
-};
-
-function setLang(lang) {
-  const t = translations[lang];
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (t[key]) el.textContent = t[key];
-  });
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.getAttribute('onclick').includes(`'${lang}'`));
-  });
-}
+window.onclick = function(event) { if (event.target == document.getElementById("projectModal")) closeModal(); }
 </script>
 </body>
 </html>
