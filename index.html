@@ -41,10 +41,8 @@ body {
 body::before {
   content: "";
   position: fixed;
-  top: -10%;
-  left: -10%;
-  width: 40%;
-  height: 40%;
+  top: -10%; left: -10%;
+  width: 40%; height: 40%;
   background: radial-gradient(circle, var(--purple-glow) 0%, transparent 70%);
   z-index: -1;
   pointer-events: none;
@@ -56,11 +54,9 @@ body::before {
 
 nav {
   position: fixed;
-  top: 0;
-  width: 100%;
+  top: 0; width: 100%;
   z-index: 1000;
-  padding: 0 1.5rem;
-  height: auto;
+  padding: 1rem;
   min-height: 80px;
   display: flex;
   align-items: center;
@@ -69,7 +65,6 @@ nav {
   backdrop-filter: blur(15px);
   border-bottom: 1px solid var(--border);
   flex-wrap: wrap;
-  padding: 1rem;
 }
 
 .nav-logo { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; }
@@ -78,99 +73,50 @@ nav {
 
 .nav-links { display: flex; gap: 1.5rem; list-style: none; }
 .nav-links a { 
-  font-size: 0.65rem; 
-  font-weight: 700; 
-  text-transform: uppercase; 
-  letter-spacing: 1px;
-  color: var(--muted); 
-  text-decoration: none; 
-  transition: 0.3s; 
+  font-size: 0.65rem; font-weight: 700; text-transform: uppercase; 
+  letter-spacing: 1px; color: var(--muted); text-decoration: none; transition: 0.3s; 
 }
 .nav-links a:hover { color: var(--text); }
 
-.lang-toggle { 
-    display: flex; 
-    gap: 4px; 
-    background: rgba(255,255,255,0.05); 
-    border-radius: 30px; 
-    padding: 4px; 
-    border: 1px solid var(--border);
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.lang-btn { 
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 8px; 
-  background: transparent; 
-  border: none; 
-  color: var(--muted); 
-  font-size: 0.6rem; 
-  cursor: pointer; 
-  border-radius: 20px; 
-  transition: 0.3s; 
-  font-weight: 800; 
-}
-.lang-btn img { width: 12px; height: 12px; border-radius: 50%; object-fit: cover; }
+.lang-toggle { display: flex; gap: 4px; background: rgba(255,255,255,0.05); border-radius: 30px; padding: 4px; border: 1px solid var(--border); justify-content: center; }
+.lang-btn { display: flex; align-items: center; gap: 4px; padding: 4px 8px; background: transparent; border: none; color: var(--muted); font-size: 0.6rem; cursor: pointer; border-radius: 20px; font-weight: 800; }
+.lang-btn img { width: 12px; height: 12px; border-radius: 50%; }
 .lang-btn.active { background: var(--purple); color: #fff; }
 
 section { padding: 8rem 2rem; max-width: 1100px; margin: 0 auto; }
 
-#perfil { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
 h1.hero-title { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 800; line-height: 0.9; margin-bottom: 2.5rem; letter-spacing: -3px; }
 h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--purple-light), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
 .about-block { font-size: 1.1rem; color: #b4acc7; max-width: 750px; margin-bottom: 4rem; border-left: 3px solid var(--purple); padding-left: 20px; }
 
-.formation-card, .project-card, .skill-card, .exp-card { 
-  background: var(--bg2); 
-  border: 1px solid var(--border); 
-  backdrop-filter: blur(10px); 
-  border-radius: 24px; 
-  transition: all 0.4s;
-}
+.formation-row, .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.formation-card, .project-card, .skill-card, .exp-card { background: var(--bg2); border: 1px solid var(--border); backdrop-filter: blur(10px); border-radius: 24px; transition: 0.4s; }
 
-.formation-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-.formation-card { padding: 2rem; }
-
-.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-.project-card { overflow: hidden; display: flex; flex-direction: column; }
+.project-card { overflow: hidden; display: flex; flex-direction: column; cursor: pointer; }
+.project-card:hover { border-color: var(--purple-light); transform: translateY(-5px); }
 .project-img { width: 100%; height: 200px; object-fit: cover; opacity: 0.7; transition: 0.4s; }
-.project-card:hover .project-img { opacity: 1; transform: scale(1.05); }
-.project-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+.project-card:hover .project-img { opacity: 1; }
+.project-content { padding: 1.5rem; flex-grow: 1; }
 
-.status-badge { 
-  font-size: 0.6rem; 
-  font-weight: 800; 
-  text-transform: uppercase; 
-  padding: 4px 8px; 
-  border-radius: 20px; 
-  border: 1px solid currentColor; 
-  display: inline-block; 
-  margin-bottom: 1rem; 
-}
-
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-.skill-card { padding: 2rem; }
-.tag { display: inline-block; padding: 6px 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); color: var(--muted); border-radius: 10px; font-size: 0.75rem; margin: 4px; text-decoration: none; }
+.status-badge { font-size: 0.6rem; font-weight: 800; text-transform: uppercase; padding: 4px 8px; border-radius: 20px; border: 1px solid currentColor; display: inline-block; margin-bottom: 1rem; }
+.tag { display: inline-block; padding: 6px 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); color: var(--muted); border-radius: 10px; font-size: 0.75rem; margin: 4px; }
 .tag.featured { border-color: var(--cyan); color: var(--cyan); }
 
-.exp-card { padding: 2rem; margin-bottom: 2rem; }
+/* MODAL STYLES */
+.modal { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(7, 7, 10, 0.95); backdrop-filter: blur(10px); justify-content: center; align-items: center; }
+.modal-content { position: relative; width: 90%; max-width: 800px; text-align: center; }
+.modal-img { width: 100%; max-height: 70vh; object-fit: contain; border-radius: 12px; border: 1px solid var(--border); }
+.close-modal { position: absolute; top: -40px; right: 0; color: #fff; font-size: 2rem; cursor: pointer; }
+.modal-nav { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
+.modal-btn { background: var(--purple); color: white; border: none; padding: 8px 20px; border-radius: 50px; cursor: pointer; font-weight: bold; }
+#imgCounter { margin-top: 10px; color: var(--muted); font-size: 0.8rem; }
 
-.social-btn { display: inline-flex; align-items: center; gap: 10px; padding: 1rem 2rem; background: var(--bg2); border: 1px solid var(--border); color: #fff; border-radius: 100px; text-decoration: none; font-weight: 800; font-size: 0.8rem; transition: 0.4s; }
-.social-btn:hover { border-color: var(--cyan); transform: translateY(-3px); }
+.social-btn { display: inline-flex; align-items: center; gap: 10px; padding: 1rem 2rem; background: var(--bg2); border: 1px solid var(--border); color: #fff; border-radius: 100px; text-decoration: none; font-weight: 800; transition: 0.4s; }
+.cv-btn { display: inline-block; background: var(--purple); color: #fff; padding: 1rem 2.5rem; border-radius: 100px; text-decoration: none; font-weight: 800; font-size: 0.75rem; transition: 0.4s; }
 
-.cv-btn { display: inline-block; background: var(--purple); color: #fff; padding: 1rem 2.5rem; border-radius: 100px; text-decoration: none; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; transition: 0.4s; }
-.cv-btn:hover { background: var(--purple-light); transform: translateY(-3px); }
-
-@media (max-width: 1000px) {
-    nav { flex-direction: column; padding: 1rem; gap: 1rem; }
-}
-
-@media (max-width: 600px) {
-    .formation-row, .projects-grid { grid-template-columns: 1fr; }
-}
+@media (max-width: 1000px) { nav { flex-direction: column; gap: 1rem; } }
+@media (max-width: 600px) { .formation-row, .projects-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -186,10 +132,6 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
   <div class="lang-toggle">
     <button class="lang-btn active" onclick="setLang('pt')"><img src="https://flagcdn.com/w40/br.png"> PT</button>
     <button class="lang-btn" onclick="setLang('en')"><img src="https://flagcdn.com/w40/us.png"> EN</button>
-    <button class="lang-btn" onclick="setLang('fr')"><img src="https://flagcdn.com/w40/fr.png"> FR</button>
-    <button class="lang-btn" onclick="setLang('de')"><img src="https://flagcdn.com/w40/de.png"> DE</button>
-    <button class="lang-btn" onclick="setLang('jp')"><img src="https://flagcdn.com/w40/jp.png"> JP</button>
-    <button class="lang-btn" onclick="setLang('zh')"><img src="https://flagcdn.com/w40/cn.png"> ZH</button>
   </div>
 </nav>
 
@@ -197,7 +139,6 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
   <div class="reveal">
     <h1 class="hero-title">José <br><em>Pimentel</em></h1>
     <p class="about-block" data-i18n="about">Profissional com sólida formação técnica em Mecatrônica e experiência prática em suporte de TI e produção industrial. Atualmente cursando Análise e Desenvolvimento de Sistemas.</p>
-    
     <div class="formation-row">
       <div class="formation-card">
         <small style="color:var(--cyan); font-weight:900;" data-i18n="f_label1">FORMAÇÃO SUPERIOR</small>
@@ -210,7 +151,6 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
         <p style="font-size:0.8rem; color:var(--muted);" data-i18n="f_concluded">Concluído em 2025</p>
       </div>
     </div>
-
     <div style="margin-top: 3rem;">
       <a href="https://docs.google.com/document/d/1SL9lQdC29JfXIG1wj2N_UaAx_SaOO7gDY8kSLKbsDy4/edit?usp=sharing" target="_blank" class="cv-btn" data-i18n="dl_cv">Download CV</a>
     </div>
@@ -221,8 +161,8 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
   <h2 style="margin-bottom: 3rem; font-size: 2.5rem;" class="reveal" data-i18n="nav_projects">Projetos</h2>
   <div class="projects-grid">
     
-    <div class="project-card reveal">
-      <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" class="project-img">
+    <div class="project-card reveal" onclick="openModal('cobyte')">
+      <img src="integrador1.png" class="project-img">
       <div class="project-content">
         <div class="status-badge" style="color: var(--cyan);" data-i18n="status_dev">Em Desenvolvimento</div>
         <h3 data-i18n="proj3_title">CoByte - Plataforma Colaborativa</h3>
@@ -233,8 +173,8 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
       </div>
     </div>
 
-    <div class="project-card reveal">
-      <img src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?auto=format&fit=crop&w=800&q=80" class="project-img">
+    <div class="project-card reveal" onclick="openModal('catequese')">
+      <img src="catequese1.png" class="project-img">
       <div class="project-content">
         <div class="status-badge" style="color: #4ade80;" data-i18n="status_done">Concluído</div>
         <h3 data-i18n="proj4_title">Sistema de Gestão de Catequese</h3>
@@ -264,6 +204,18 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
     </div>
   </div>
 </section>
+
+<div id="projectModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img id="modalImage" src="" class="modal-img">
+        <div class="modal-nav">
+            <button class="modal-btn" onclick="prevImg()">Anterior</button>
+            <button class="modal-btn" onclick="nextImg()">Próxima</button>
+        </div>
+        <p id="imgCounter"></p>
+    </div>
+</div>
 
 <section id="skills">
   <h2 style="margin-bottom: 3rem; font-size: 2.5rem;" class="reveal" data-i18n="skills_title">Skills & Tecnologias</h2>
@@ -313,6 +265,29 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
 <script>
 ScrollReveal().reveal('.reveal', { distance: '40px', duration: 1000, interval: 100, origin: 'bottom' });
 
+// Modal Logic
+const galleries = {
+    cobyte: ["integrador1.png", "integrador2.png", "integrador3.png", "integrador4.png", "integrador5.png", "integrador6.png", "integrador7.png", "integrador8.png"],
+    catequese: ["catequese1.png", "catequese2.png", "catequese3.png", "catequese4.png"]
+};
+let currentGallery = [];
+let currentIndex = 0;
+
+function openModal(project) {
+    currentGallery = galleries[project];
+    currentIndex = 0;
+    document.getElementById("projectModal").style.display = "flex";
+    updateModal();
+}
+function closeModal() { document.getElementById("projectModal").style.display = "none"; }
+function updateModal() {
+    document.getElementById("modalImage").src = currentGallery[currentIndex];
+    document.getElementById("imgCounter").textContent = `Imagem ${currentIndex + 1} de ${currentGallery.length}`;
+}
+function nextImg() { currentIndex = (currentIndex + 1) % currentGallery.length; updateModal(); }
+function prevImg() { currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length; updateModal(); }
+window.onclick = (e) => { if(e.target.id === "projectModal") closeModal(); }
+
 const translations = {
   pt: {
     nav_profile: "Perfil", nav_projects: "Projetos", nav_skills: "Skills", nav_exp: "Experiência",
@@ -344,7 +319,6 @@ const translations = {
     alstom_desc: "Large-scale projects: SP and Santiago Metro.", usiminas_desc: "Hardware maintenance and IT technical support.",
     exp_date1: "Jul 2025 - Mar 2026", exp_date2: "2024 - Jun 2025"
   }
-  // As outras línguas (FR, DE, JP, ZH) seguem o mesmo padrão para os novos campos...
 };
 
 function setLang(lang) {
