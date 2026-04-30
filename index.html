@@ -168,6 +168,8 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
     padding: 8px 20px; border-radius: 50px; cursor: pointer; font-weight: bold; 
 }
 
+#imgCounter { margin-top: 15px; color: var(--muted); font-size: 0.8rem; }
+
 /* Botões */
 .cv-btn { display: inline-block; background: var(--purple); color: #fff; padding: 1rem 2.5rem; border-radius: 100px; text-decoration: none; font-weight: 800; font-size: 0.75rem; transition: 0.4s; }
 .cv-btn:hover { background: var(--purple-light); transform: translateY(-3px); }
@@ -221,26 +223,26 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
   <h2 style="margin-bottom: 3rem; font-size: 2.5rem;" class="reveal" data-i18n="nav_projects">Projetos</h2>
   <div class="projects-grid">
     
-    <div class="project-card reveal">
-      <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" class="project-banner">
+    <div class="project-card reveal" onclick="openModal('cobyte')">
+      <img src="integrador1.png" class="project-banner">
       <div class="project-content">
-        <div class="status-badge" style="color: var(--cyan); border-color: var(--cyan);">● Em Desenvolvimento</div>
+        <div class="status-badge" style="color: var(--cyan); border-color: var(--cyan);">● Ver Galeria</div>
         <h3 data-i18n="proj3_title">CoByte - Plataforma Colaborativa</h3>
         <p style="font-size: 0.85rem; color: var(--muted); margin: 1rem 0;" data-i18n="proj3_desc">Levantamento de requisitos de software.</p>
         <div>
-          <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">MySQL</span>
+          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">MySQL</span>
         </div>
       </div>
     </div>
 
-    <div class="project-card reveal" onclick="openModal()">
+    <div class="project-card reveal" onclick="openModal('catequese')">
       <img src="catequese1.png" class="project-banner">
       <div class="project-content">
         <div class="status-badge" style="color: var(--green-neon); border-color: var(--green-neon);">● Ver Galeria</div>
         <h3 data-i18n="proj4_title">Sistema de Gestão de Catequese</h3>
         <p style="font-size: 0.85rem; color: var(--muted); margin: 1rem 0;" data-i18n="proj4_desc">Aplicação para organização de turmas e alunos.</p>
         <div>
-          <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">MySQL</span>
+          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">MySQL</span>
         </div>
       </div>
     </div>
@@ -251,11 +253,12 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
 <div id="projectModal" class="modal">
     <div class="modal-content">
         <span class="close-modal" onclick="closeModal()">&times;</span>
-        <img id="modalImage" src="catequese1.png" class="modal-img">
+        <img id="modalImage" src="" class="modal-img">
         <div class="modal-nav">
             <button class="modal-btn" onclick="prevImg()">Anterior</button>
             <button class="modal-btn" onclick="nextImg()">Próxima</button>
         </div>
+        <p id="imgCounter"></p>
     </div>
 </div>
 
@@ -263,11 +266,24 @@ h1.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--
 ScrollReveal().reveal('.reveal', { distance: '40px', duration: 1000, interval: 100, origin: 'bottom' });
 
 // Modal Logic
-const images = ["catequese1.png", "catequese2.png", "catequese3.png", "catequese4.png"];
+const galleries = {
+    cobyte: [
+        "integrador1.png", "integrador2.png", "integrador3.png", "integrador4.png",
+        "integrador5.png", "integrador6.png", "integrador7.png", "integrador8.png"
+    ],
+    catequese: [
+        "catequese1.png", "catequese2.png", "catequese3.png", "catequese4.png"
+    ]
+};
+
+let currentGallery = [];
 let currentIndex = 0;
 
-function openModal() {
+function openModal(projectKey) {
+    currentGallery = galleries[projectKey];
+    currentIndex = 0;
     document.getElementById("projectModal").style.display = "flex";
+    updateModal();
 }
 
 function closeModal() {
@@ -275,16 +291,17 @@ function closeModal() {
 }
 
 function updateModal() {
-    document.getElementById("modalImage").src = images[currentIndex];
+    document.getElementById("modalImage").src = currentGallery[currentIndex];
+    document.getElementById("imgCounter").textContent = `Imagem ${currentIndex + 1} de ${currentGallery.length}`;
 }
 
 function nextImg() {
-    currentIndex = (currentIndex + 1) % images.length;
+    currentIndex = (currentIndex + 1) % currentGallery.length;
     updateModal();
 }
 
 function prevImg() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
     updateModal();
 }
 
@@ -299,16 +316,16 @@ const translations = {
     about: "Profissional com sólida formação técnica em Mecatrônica e experiência prática em suporte de TI e produção industrial. Atualmente cursando Análise e Desenvolvimento de Sistemas.",
     f_label1: "FORMAÇÃO SUPERIOR", f_title1: "Análise e Desenvolvimento de Sistemas",
     f_label2: "FORMAÇÃO TÉCNICA", f_title2: "Técnico em Mecatrônica", f_concluded: "Concluído em 2025",
-    dl_cv: "Download CV", proj3_title: "CoByte", proj4_title: "Sistema de Catequese",
-    proj4_desc: "Aplicação para organização de turmas e alunos."
+    dl_cv: "Download CV", proj3_title: "CoByte", proj3_desc: "Levantamento de requisitos de software.", 
+    proj4_title: "Sistema de Catequese", proj4_desc: "Aplicação para organização de turmas e alunos."
   },
   en: {
     nav_profile: "Profile", nav_projects: "Projects", nav_skills: "Skills",
     about: "Professional with a solid background in Mechatronics and practical experience in IT support. Currently studying Systems Analysis.",
     f_label1: "HIGHER EDUCATION", f_title1: "Systems Analysis and Development",
     f_label2: "TECHNICAL EDUCATION", f_title2: "Mechatronics Technician", f_concluded: "Completed in 2025",
-    dl_cv: "Download CV", proj3_title: "CoByte", proj4_title: "Catechesis System",
-    proj4_desc: "Application for organizing classes and students."
+    dl_cv: "Download CV", proj3_title: "CoByte", proj3_desc: "Software requirements gathering.",
+    proj4_title: "Catechesis System", proj4_desc: "Application for organizing classes and students."
   }
 };
 
@@ -317,6 +334,9 @@ function setLang(lang) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (t[key]) el.textContent = t[key];
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('onclick').includes(`'${lang}'`));
   });
 }
 </script>
